@@ -29,4 +29,34 @@ public class Account {
         }
     }
     
+    public int getUID()
+    {
+       return this.UID;
+    }
+    
+    public String getUsername()
+    {
+        return this.username;
+    }
+    
+    public String getPassword()
+    {
+        return this.password;
+    }
+    
+    public byte[] getAvatar()
+    {
+        if(this.avatar != null)
+            return avatar;
+        
+        return null;
+    }
+    
+    public boolean setAvatar(byte[] img)
+    {
+        this.avatar = img;
+        
+        return this.avatar != null;
+    }
+    
 }
