@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author hridgeway
  */
 public class AccountManager {
-    
+    //being worked on
     protected int num_acc; //Account count
     protected ArrayList<Integer> Userlist = new ArrayList<Integer>(); //list of users. Holds ints until a user class is made to fill the list.
     
