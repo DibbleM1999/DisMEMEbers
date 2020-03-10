@@ -16,8 +16,12 @@ public class Login {
     
     public Login(String username, String password)
     {
-        Account NewAccount = Account(username, password);
+        
+        Account NewAccount = new Account(username, password);
+        Accounts.add(NewAccount);
+        
         
     }
+    
     
 }
