@@ -21,7 +21,7 @@ public class Logout extends HttpServlet
     {
         req.getSession().removeAttribute("user");
         
-        //Display text on logout
+        //Display text on logout.
         resp.setContentType("text/plain");
         var pw = resp.getWriter();
         pw.printf("Logged out");
