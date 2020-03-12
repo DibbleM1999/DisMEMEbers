@@ -18,7 +18,7 @@ import java.util.ArrayList;
 @WebServlet(urlPatterns={"/Login"})
 public class Login extends HttpServlet
 {
-    
+    //needs to get data from account manager
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
         resp.setContentType("text/plain");
         var pw = resp.getWriter();
