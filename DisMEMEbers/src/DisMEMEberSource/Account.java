@@ -16,6 +16,7 @@ public class Account {
     protected String password;
     protected String email;
     protected int UID = -1;
+    protected boolean banned = false;
     protected byte[] avatar = null;
     
     public Account(String user, String pass, String em)
@@ -29,6 +30,11 @@ public class Account {
             this.UID = next_UID;
             next_UID++;
         }
+    }
+    
+    public boolean isBanned()
+    {
+        return this.banned;
     }
     
     public int getUID()
