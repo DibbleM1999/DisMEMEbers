@@ -18,10 +18,11 @@ public class Account {
     protected int UID = -1;
     protected byte[] avatar = null;
     
-    public Account(String user, String pass)
+    public Account(String user, String pass, String em)
     {
         this.username = user;
         this.password = pass;
+        this.email = em;
         
         if(this.UID == -1 || this.UID < next_UID)
         {
