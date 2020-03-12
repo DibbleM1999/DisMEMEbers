@@ -14,34 +14,59 @@ import java.util.ArrayList;
 public class AccountManager {
     //being worked on
     protected int num_acc; //Account count
-    protected ArrayList<Integer> Userlist = new ArrayList<Integer>(); //list of users. Holds ints until a user class is made to fill the list.
+    protected ArrayList<Account> Userlist = new ArrayList<Account>(); //list of users. Holds ints until a user class is made to fill the list.
     
     protected AccountManager()
     {
-        for(int i = 0; i < 5; i++)
+        //nothing yet. add file parsing later
+    }
+    
+    public int add(Account newuser)//finish when user class is made
+    {
+        Userlist.add(newuser);
+        return newuser.getUID();
+    }
+    
+    public Account getUser(int ID) //will return user once created
+    {
+        for(int i = 0; i < Userlist.size(); i++)
         {
-            Userlist.add(num_acc);
-            num_acc++;
+            if(Userlist.get(i).UID == ID)
+                return Userlist.get(i);
+        }
+        
+        Account fail = new Account("",""); //Blank account to show there is no account of the given ID.
+        return fail;
+    }
+    
+    public int getID(String user)//Will return the ID of the given user. -1 if none.
+    {
+        for(int i = 0; i < Userlist.size(); i++)
+        {
+            if(Userlist.get(i).getUsername() == user)
+                return Userlist.get(i).getUID();
+        }
+        
+       return -1;
+    }
+    
+    public void delete_by_ID(int ID)
+    {
+        for(int i = 0; i < Userlist.size(); i++)
+        {
+            if(Userlist.get(i).getUID() == ID)
+            {
+                Userlist.remove(i);
+                System.out.print("Deleted");
+                break;
+            }   
         }
     }
     
-    public void add(int val)//finish when user class is made
+    public void Clear() //KILL EVERYONE
     {
-        
-    }
-    
-    public void remove(int index)//Same as add but removing
-    {
-        try
-        {
-            int i = Userlist.get(index);
-        }catch(ArrayIndexOutOfBoundsException e){System.out.println(e);}
-         System.out.println("Index is less than Zero or greater than size of array");
-    }
-    
-    public int getUser(int ID) //will return user once created
-    {
-        return this.Userlist.get(0);
+        Userlist.get(0).resetUID();
+        Userlist.clear();
     }
     
 }

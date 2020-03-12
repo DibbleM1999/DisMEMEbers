@@ -21,7 +21,7 @@ public class AccountManagerNGTest {
     public AccountManagerNGTest() {
     }
 
-    /*
+    
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
@@ -37,7 +37,7 @@ public class AccountManagerNGTest {
     @AfterMethod
     public void tearDownMethod() throws Exception {
     }
-    */
+    
     /**
      * Test of add method, of class AccountManager.
      */
@@ -52,4 +52,61 @@ public class AccountManagerNGTest {
         
     }
     
+    @Test
+    public void testAddUser1() //To test adding a user
+    {
+        AccountManager A = new AccountManager();
+        
+        Account user = new Account("Hayden","Pass");
+        int testID = A.add(user);
+        assertEquals(A.getUser(testID).username,"Hayden");
+        assertEquals(A.getUser(testID).password,"Pass");
+        A.Clear();
+    }
+    
+    @Test
+    public void testAddUser2() //To test adding a user and check if it exists via ID
+    {
+        AccountManager A = new AccountManager();
+        
+        Account user = new Account("Hayden","Pass");
+        int testID = A.add(user);
+        assertEquals(A.getUser(testID + 1).username,"");
+        assertEquals(A.getUser(testID + 1).password,"");
+        A.Clear();
+    }
+    
+    @Test
+    public void testAddUser3() //To test adding a user and check if it exists via Username.
+    {
+        AccountManager A = new AccountManager();
+        
+        Account user = new Account("Hayden","Pass");
+        int testID = A.add(user);
+        assertEquals(A.getID("Hayden"),testID);
+        A.Clear();
+    }
+    
+    @Test
+    public void testAddUser4() //To test adding a user and check if it exists via Username.
+    {
+        AccountManager A = new AccountManager();
+        
+        Account user = new Account("Hayden","Pass");
+        A.add(user);
+        assertEquals(A.getID("Hayde"),-1);
+        A.Clear();
+    }
+    
+    
+    @Test
+    public void testRemoveUser1() //To test removing a user by searching ID.
+    {
+        AccountManager A = new AccountManager();
+        Account user = new Account("Hayden","Pass");
+        int testID = A.add(user);
+        assertEquals(A.getID("Hayden"),testID);
+        A.delete_by_ID(testID);
+        assertEquals(A.getID("Hayden"),-1);
+    }
 }
