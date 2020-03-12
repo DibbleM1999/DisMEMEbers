@@ -1,15 +1,15 @@
 "use strict";
 
 function FindMeme(){
-    let name = $("#name").val();
-    let pobox = $("#pobox").prop("checked");
-    let state = $("#state").val();
+    //let name = $("#name").val();
+    //let pobox = $("#pobox").prop("checked");
+    //let state = $("#state").val();
     
     let fdata = new FormData();
 
-    fdata.append("name",name);
-    fdata.append("pobox",pobox);
-    fdata.append("state",state);
+    //fdata.append("name",name);
+    //fdata.append("pobox",pobox);
+    //fdata.append("state",state);
 
     $.ajax({
         type: "POST",
