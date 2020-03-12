@@ -14,6 +14,7 @@ public class Account {
     
     protected String username;
     protected String password;
+    protected String email;
     protected int UID = -1;
     protected byte[] avatar = null;
     
@@ -37,6 +38,11 @@ public class Account {
     public String getUsername()
     {
         return this.username;
+    }
+    
+    public String getEmail()
+    {
+        return this.email;
     }
     
     public String getPassword()
