@@ -9,8 +9,16 @@ package DisMEMEberSource;
  *
  * @author DeBbb
  */
-@WebServlet(urlPatterns = {"/register"})
-public class Register extends HttpServlet {
+
+import java.io.IOException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet(urlPatterns = {"/signup"})
+public class Signup extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/plain");
@@ -25,7 +33,6 @@ public class Register extends HttpServlet {
             return;
         }
 
-
         String[] emailsplit = email.split("@");
 
         if (emailsplit.length != 2) {
@@ -39,14 +46,20 @@ public class Register extends HttpServlet {
             return;
         }
 
-        if (username)
-            
-        if (AccountManager.instance.addUser(email, username, password)) {
-            pw.print("CREATED");
-            sess.setAttribute("name", username);
-        } 
-        else {
-            pw.print("DUPLICATE");
+        if (AccountManager.instance.name_check(username)){  // check function name
+            pw.print("USERINUSE");
+            return;
         }
+        
+        
+        if (AccountManager.instance.email_check(email)){    // check function name
+            pw.print("EMAILINUSE");
+            return;
+        }
+             
+        AccountManager.instance.add(new Account(username, password, email)); 
+        pw.print("CREATED");
+        sess.setAttribute("name", username);
+        
     }
 }

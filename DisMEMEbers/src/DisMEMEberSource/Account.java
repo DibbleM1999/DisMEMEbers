@@ -14,19 +14,27 @@ public class Account {
     
     protected String username;
     protected String password;
+    protected String email;
     protected int UID = -1;
+    protected boolean banned = false;
     protected byte[] avatar = null;
     
-    public Account(String user, String pass)
+    public Account(String user, String pass, String em)
     {
         this.username = user;
         this.password = pass;
+        this.email = em;
         
         if(this.UID == -1 || this.UID < next_UID)
         {
             this.UID = next_UID;
             next_UID++;
         }
+    }
+    
+    public boolean isBanned()
+    {
+        return this.banned;
     }
     
     public int getUID()
@@ -37,6 +45,11 @@ public class Account {
     public String getUsername()
     {
         return this.username;
+    }
+    
+    public String getEmail()
+    {
+        return this.email;
     }
     
     public String getPassword()
