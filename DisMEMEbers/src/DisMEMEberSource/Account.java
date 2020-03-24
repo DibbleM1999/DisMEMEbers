@@ -52,10 +52,7 @@ public class Account {
         return this.email;
     }
     
-    public String getEmail()
-    {
-        return this.email;
-    }
+
     
     public String getPassword()
     {
@@ -77,4 +74,15 @@ public class Account {
         return this.avatar != null;
     }
     
+
+    public void resetUID()
+    {
+        this.next_UID = 1000;
+    }
+    
+    public int nextid()
+    {
+        return this.next_UID;
+    }
 }
+    
