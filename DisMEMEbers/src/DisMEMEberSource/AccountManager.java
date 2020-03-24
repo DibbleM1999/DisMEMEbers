@@ -35,7 +35,7 @@ public class AccountManager {
                 return Userlist.get(i);
         }
         
-        Account fail = new Account("",""); //Blank account to show there is no account of the given ID.
+        Account fail = new Account("","",""); //Blank account to show there is no account of the given ID.
         return fail;
     }
     
