@@ -18,7 +18,7 @@ public class AccountManager {
     
     protected AccountManager()
     {
-        //nothing yet. add file parsing later
+        //nothing yet. add file parsing later with database.
     }
     
     public int add(Account newuser)//finish when user class is made
@@ -35,7 +35,7 @@ public class AccountManager {
                 return Userlist.get(i);
         }
         
-        Account fail = new Account("",""); //Blank account to show there is no account of the given ID.
+        Account fail = new Account("","",""); //Blank account to show there is no account of the given ID.
         return fail;
     }
     
@@ -61,6 +61,30 @@ public class AccountManager {
                 break;
             }   
         }
+    }
+    
+    public boolean name_check(String username)
+    {
+        for(int i=0; i<Userlist.size();i++)
+        {
+            if(Userlist.get(i).getUsername() == username)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean email_check(String mail)
+    {
+        for(int i=0; i<Userlist.size();i++)
+        {
+            if(Userlist.get(i).getEmail() == mail)
+            {
+                return true;
+            }
+        }
+        return false;
     }
     
     public void Clear() //KILL EVERYONE
