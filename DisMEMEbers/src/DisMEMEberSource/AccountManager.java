@@ -15,6 +15,7 @@ public class AccountManager {
     //being worked on
     protected int num_acc; //Account count
     protected ArrayList<Account> Userlist = new ArrayList<Account>(); //list of users. Holds ints until a user class is made to fill the list.
+    public static AccountManager instance = new AccountManager();
     
     protected AccountManager()
     {
