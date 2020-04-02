@@ -21,6 +21,26 @@ public class AccountManager {
         //nothing yet. add file parsing later
     }
     
+    void createDatabase() throws Exception
+    {
+        try(var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql;create=true"))
+        {
+            var stmt = conn.prepareStatement(
+                    "create table users ("
+                  + "uid integer primary key generated always as identity, "
+                  + "username varchar(32), "
+                  + "password varchar(32), "
+                  + "email varchar(52), "
+                  + "avatar blob"
+                  + ")");
+            stmt.executeUpdate();
+        }
+        catch(Exception e)
+        {
+            throw(e);
+        }
+    }
+    
     public int add(Account newuser)//finish when user class is made
     {
         Userlist.add(newuser);
