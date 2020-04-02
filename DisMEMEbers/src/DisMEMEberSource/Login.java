@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Ezekiel and Dan
+ * @author Daniel & Ezekiel
  */
 @WebServlet(urlPatterns={"/Login"})
 public class Login extends HttpServlet
@@ -25,8 +25,8 @@ public class Login extends HttpServlet
         var iUser = req.getParameter("user");
         var iPass = req.getParameter("pass");
         for (int i = 0; i < Account.next_UID; i++){
-            var user = "Account.class.getUsername();";
-            var pass = "Account.class.getPassword();";
+            var user = Account.History.get(i);
+            var pass = Account.History.get(i);
             if( iUser.equals(user) || iPass.equals(pass)){
                 var sess = req.getSession();
                 pw.printf("Logged in "+user);
