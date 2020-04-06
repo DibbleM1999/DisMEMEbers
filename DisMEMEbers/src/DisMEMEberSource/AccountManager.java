@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class AccountManager {
     //being worked on
+    public static AccountManager instance;
     protected int num_acc; //Account count
     protected ArrayList<Account> Userlist = new ArrayList<Account>(); //list of users. Holds ints until a user class is made to fill the list.
     
@@ -124,6 +125,14 @@ public class AccountManager {
     {
         Userlist.get(0).resetUID();
         Userlist.clear();
+    }
+
+    boolean name_check(String username) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    boolean email_check(String email) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
