@@ -13,13 +13,13 @@ import java.util.ArrayList;
  */
 public class AccountManager {
     //being worked on
-    public static AccountManager instance;
     protected int num_acc; //Account count
-    protected ArrayList<Account> Userlist = new ArrayList<Account>(); //list of users. Holds ints until a user class is made to fill the list.
+    protected ArrayList<Account> Userlist = new ArrayList<>(); //list of users. Holds ints until a user class is made to fill the list.
+    public static AccountManager instance = new AccountManager();
     
     protected AccountManager()
     {
-        //nothing yet. add file parsing later
+        //nothing yet. add file parsing later with database.
     }
     
     void createDatabase() throws Exception
@@ -121,18 +121,34 @@ public class AccountManager {
         }
     }
     
+    public boolean name_check(String username)
+    {
+        for(int i=0; i<Userlist.size();i++)
+        {
+            if(Userlist.get(i).getUsername() == null ? username == null : Userlist.get(i).getUsername().equals(username))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean email_check(String mail)
+    {
+        for(int i=0; i<Userlist.size();i++)
+        {
+            if(Userlist.get(i).getEmail() == null ? mail == null : Userlist.get(i).getEmail().equals(mail))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public void Clear() //KILL EVERYONE
     {
         Userlist.get(0).resetUID();
         Userlist.clear();
-    }
-
-    boolean name_check(String username) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    boolean email_check(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
