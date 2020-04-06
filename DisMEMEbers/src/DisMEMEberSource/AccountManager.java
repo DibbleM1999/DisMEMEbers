@@ -83,7 +83,7 @@ public class AccountManager {
         //}
         try(var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql"))
         {
-            var stmt = conn.prepareStatement("select uid from users where username=" + user + " and password IS NOT NULL");
+            var stmt = conn.prepareStatement("select uid from users where username=" + user + " and password IS NOT NULL");    // Needs to fix the string concatenation.
             var result = stmt.executeQuery();
             int uid = result.getInt(1);
             System.out.println(uid);
@@ -95,16 +95,26 @@ public class AccountManager {
         }
     }
     
-    public void delete_by_ID(int ID)
+
+    public void delete_by_ID(int ID) throws Exception
     {
-        for(int i = 0; i < Userlist.size(); i++)
+        //for(int i = 0; i < Userlist.size(); i++)
+        //{
+        //    if(Userlist.get(i).getUID() == ID)
+        //    {
+        //        Userlist.remove(i);
+        //        System.out.print("Deleted");
+        //        break;
+        //    }   
+        //}
+        try(var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql"))
         {
-            if(Userlist.get(i).getUID() == ID)
-            {
-                Userlist.remove(i);
-                System.out.print("Deleted");
-                break;
-            }   
+            var stmt = conn.prepareStatement("delete from users where uid=" + ID);    // Needs to fix the string concatenation.
+            stmt.executeUpdate();
+        }
+        catch(Exception e)
+        {
+            throw(e);
         }
     }
     
