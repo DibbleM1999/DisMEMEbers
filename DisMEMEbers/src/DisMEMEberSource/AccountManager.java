@@ -41,9 +41,24 @@ public class AccountManager {
         }
     }
     
-    public int add(Account newuser)//finish when user class is made
+    public int add(Account newuser) throws Exception//finish when user class is made
     {
         Userlist.add(newuser);
+        try (var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql"))
+        {
+            var stmt = conn.prepareStatement("insert into users "
+                    + "(username, password, email, avatar) "
+                    + "values (?, ?, ?, ?)");
+            stmt.setString(1, newuser.username);
+            stmt.setString(2, newuser.password);
+            stmt.setString(3, newuser.email);
+            stmt.setBytes(4, new byte[]{3, 1, 4, 1, 5, 9});
+            stmt.executeUpdate();
+        }
+        catch(Exception e)
+        {
+            throw(e);
+        }
         return newuser.getUID();
     }
     
