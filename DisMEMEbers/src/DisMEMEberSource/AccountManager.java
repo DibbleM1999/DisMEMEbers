@@ -83,7 +83,8 @@ public class AccountManager {
         //}
         try(var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql"))
         {
-            var stmt = conn.prepareStatement("select uid from users where username=" + user + " and password IS NOT NULL");    // Needs to fix the string concatenation.
+            var stmt = conn.prepareStatement("select uid from users where username=(user) and password IS NOT NULL values(?)");
+            stmt.setString(1, user);
             var result = stmt.executeQuery();
             int uid = result.getInt(1);
             System.out.println(uid);
@@ -109,7 +110,8 @@ public class AccountManager {
         //}
         try(var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql"))
         {
-            var stmt = conn.prepareStatement("delete from users where uid=" + ID);    // Needs to fix the string concatenation.
+            var stmt = conn.prepareStatement("delete from users where uid=(ID) values(?)");
+            stmt.setInt(1, ID);
             stmt.executeUpdate();
         }
         catch(Exception e)
