@@ -11,6 +11,18 @@ import java.util.ArrayList;
  *
  * @author hridgeway
  */
+
+/*
+CRUD REVIEW
+We Have
+- Creation of an account
+- Deletion of an account by UID
+
+We Need
+- Reading Functionality.
+- Update Functionality.
+*/
+
 public class AccountManager {
     //being worked on
     protected int num_acc; //Account count
@@ -84,7 +96,7 @@ public class AccountManager {
         //}
         try(var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql"))
         {
-            var stmt = conn.prepareStatement("select uid from users where username=(user) and password IS NOT NULL values(?)");
+            var stmt = conn.prepareStatement("select uid from users where username=? and password IS NOT NULL");
             stmt.setString(1, user);
             var result = stmt.executeQuery();
             int uid = result.getInt(1);
@@ -111,7 +123,7 @@ public class AccountManager {
         //}
         try(var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql"))
         {
-            var stmt = conn.prepareStatement("delete from users where uid=(ID) values(?)");
+            var stmt = conn.prepareStatement("delete from users where uid=?");
             stmt.setInt(1, ID);
             stmt.executeUpdate();
         }
