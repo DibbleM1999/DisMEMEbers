@@ -74,15 +74,25 @@ public class AccountManager {
         return fail;
     }
     
-    public int getID(String user)//Will return the ID of the given user. -1 if none.
+    public int getID(String user) throws Exception//Will return the ID of the given user. -1 if none.
     {
-        for(int i = 0; i < Userlist.size(); i++)
+        //for(int i = 0; i < Userlist.size(); i++)
+        //{
+        //    if(Userlist.get(i).getUsername() == user)
+        //        return Userlist.get(i).getUID();
+        //}
+        try(var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql"))
         {
-            if(Userlist.get(i).getUsername() == user)
-                return Userlist.get(i).getUID();
+            var stmt = conn.prepareStatement("select uid from users where username=" + user + " and password IS NOT NULL");
+            var result = stmt.executeQuery();
+            int uid = result.getInt(1);
+            System.out.println(uid);
+            return uid;
         }
-        
-       return -1;
+        catch(Exception e)
+        {
+            throw(e);
+        }
     }
     
     public void delete_by_ID(int ID)
