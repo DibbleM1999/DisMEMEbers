@@ -11,8 +11,6 @@ package DisMEMEberSource;
 
 import java.util.ArrayList;
 
-
-
 /**
 
  *
@@ -36,6 +34,12 @@ public class Account {
     protected int UID = -1;
     protected boolean banned = false;
     protected byte[] avatar = null;
+    
+    // here's the accounts this account is following
+    protected ArrayList<String> Followinglist = new ArrayList<String>(); 
+    
+    protected ArrayList<String> Followedlist = new ArrayList<String>(); 
+    
     
     protected ArrayList<String> History = new ArrayList<String>(); // A basic history for testing functionality.
     
@@ -119,6 +123,49 @@ public class Account {
         return this.next_UID;
     }
     
+
+    public String userRelationship(String username, boolean following) // true for following, false for unfollowing
+    {
+        if (following)
+        {
+            // check if in list
+            if(this.Followinglist.contains(username))
+            {
+                return "Already following";
+            }
+            else
+            {
+                // send notification to user that's being followed
+                this.Followinglist.add(username);
+                return username;
+            }
+            // adding 
+        }
+        else
+        {
+            
+            // check if in list
+            if(this.Followinglist.contains(username))
+            {
+                this.Followinglist.remove(username);
+                return username;
+            }
+            else
+            {
+                return "Not already following";
+            }
+
+        }
+        
+    }
+    
+    public ArrayList<String> seeWhosFollowing()
+    {
+        // search through database of accounts and for each account check who they are follwoing
+        // if this account's name is in it then add that account's name to Followedlist
+        // then return the Followedlist
+    }
+
     public void add_history(String loc) //Adds a basic string of the meme they were on. Should be replaced with more abstract stuff later
     {
         this.History.add(loc);
@@ -157,6 +204,4 @@ public class Account {
     {
         return this.History.get(index);
     }
-    
-}
     
