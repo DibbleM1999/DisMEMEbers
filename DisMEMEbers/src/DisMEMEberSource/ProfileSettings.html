@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+        <link rel=stylesheet href="Style.css">
+    </head>
+   <!--images wont be tested properly>-->
+    <body>
+        <header>
+              <h1>DisMEMEber</h1>
+        </header>
+        <nav>
+        <ul>
+          <li>username and image<li>
+          <li class="searchbar">this is the searchbar</li>
+        </ul>
+          </nav>
+        
+        <div class="main">
+       
+        <form action="/action_page.php">
+          <fieldset>
+            <legend>Username:</legend>
+            <p>Current Username:</p>
+            <br>temp</br>
+            <label for="lname">Enter New Username:</label><br>
+            <input type="text" id="lname" name="lname"><br><br>
+            <input type="submit" value="Submit">
+          </fieldset>
+          <fieldset>
+            <legend>Password:</legend>
+            <label for="pwd">Enter New Password:</label><br></br>
+            <input type="password" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+            <input type="submit">
+          </fieldset>
+          <fieldset>
+            <legend>Profile Picture:</legend>
+            <p>Current Picture:</p><br></br>
+            <img src="img_girl.jpg" alt=placeholder> 
+            <br></br>
+            <label for="myfile">Select a file:</label>
+            <input type="file" id="myfile" name="myfile"><br><br>
+            <input type="submit" value="Submit">
+          </fieldset>
+        </form>
+
+        
+        </div>          
+    </body>
+</html>
+
+
