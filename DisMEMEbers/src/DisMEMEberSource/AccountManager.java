@@ -5,6 +5,7 @@ package DisMEMEberSource;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.io.File;
 import java.util.ArrayList;
 //import java.util.List;
 /**
@@ -29,9 +30,18 @@ public class AccountManager {
     protected ArrayList<Account> Userlist = new ArrayList<>(); //list of users. Holds ints until a user class is made to fill the list.
     public static AccountManager instance = new AccountManager();
     
-    protected AccountManager()
+    protected AccountManager() 
     {
         //nothing yet. add file parsing later with database.
+        try{
+        if( !new File("disMEMEber_db.sql").exists() ){
+        AccountManager.instance.createDatabase();
+            }
+        }
+        catch(Exception e)
+        {
+            throw new RuntimeException(e);
+        }
     }
     
     void createDatabase() throws Exception
