@@ -12,6 +12,8 @@ import java.util.ArrayList;
  */
 public class Admin extends Account 
 {
+    protected Report reporton = null;
+    
     protected Admin(String user, String pass, String em)
     {
        super(user, pass, em);
@@ -62,5 +64,53 @@ public class Admin extends Account
     {
         this.get_Account_by_ID(ID, A).banned = true;
         this.get_Account_by_ID(ID, A).ban_time = time; //-1 for permaban
+    }
+    
+    public void getreport() //have public void getreport(PostManager P) later
+    {
+        /*
+            //Wanted functionality:
+        if(this.reporton == null)
+        {
+            this.reporton = P.getReport();
+        }
+        else
+        {
+            //tell admin to finish report
+        }
+        */
+    }
+    
+    public void reportPositive() //have public void getreport(PostManager P) later
+    {
+        //This is when the post breaks any rules
+        /*
+            //more code to impliment later:
+            
+        if(this.reporton != null)
+        {
+            //method 1: (remove only image)
+            Post badpost = P.get_post_by_ID(this.reporton.getpostId(););
+            badpost.img = null;
+        
+            //method 2: (remove whole post)
+            P.delete_post_by_ID(this.reporton.getpostId());
+        
+            after either method:
+            this.reporton = null;
+        }
+        else
+        {
+            //send back a problem message
+        }
+            
+            //bans can be done alsewhere.
+        */
+    }
+    
+    public void reportNegative() //don't need to pull in a postmanager for this one.
+    {
+        //This is when the post breaks no rules
+        this.reporton = null;
     }
 }
