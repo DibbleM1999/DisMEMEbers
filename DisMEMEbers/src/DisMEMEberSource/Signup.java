@@ -50,13 +50,13 @@ public class Signup extends HttpServlet {
                 return;
             }
             
-            if (AccountManager.instance.name_check(username)){  // check function name
+            if (AccountManager.instance.name_check(username)){  // check function name   AccountManager.name_check(username)
                 pw.print("USERINUSE");
                 return;
             }
             
             
-            if (AccountManager.instance.email_check(email)){    // check function name
+            if (AccountManager.instance.email_check(email)){    // check function name   AccountManager.email_check(email)
                 pw.print("EMAILINUSE");
                 return;
             }
