@@ -11,7 +11,7 @@ import java.util.Properties;
 
 /**
  *
- * @author nickb
+ * @author nickb & dionc
  */
 public class DataBase {
     private static Connection conn;
