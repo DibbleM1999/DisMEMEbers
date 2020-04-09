@@ -32,7 +32,7 @@ public class AccountManager {
     
     protected AccountManager() 
     {
-        //nothing yet. add file parsing later with database.
+        //nothing yet. add file parsing late r with database.
         try{
         if( !new File("disMEMEber_db.sql").exists() ){
         AccountManager.instance.createDatabase();
