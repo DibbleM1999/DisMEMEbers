@@ -62,6 +62,7 @@ public class Signup extends HttpServlet {
             }
             
             AccountManager.instance.add(new Account(username, password, email));
+            //AccountManager.add(new Account(username, password, email));
             pw.print("CREATED");
             sess.setAttribute("name", username);
         } catch (Exception ex) {
