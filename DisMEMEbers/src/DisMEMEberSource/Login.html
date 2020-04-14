@@ -10,7 +10,7 @@
     </head>
     <body>
         <header>
-              <h1>DisMEMEber<h1>
+              <h1>DisMEMEber</h1>
         </header>
         <nav>
         <ul>
@@ -19,13 +19,23 @@
         </ul>
           </nav>
   <div class="left">
-  <h1>Login</h1>
-  This is the login form
+  
+  <form action="/action_page.php">      
+            <legend>Login:</legend>
+            <label for="lname">Username:</label><br>
+            <input type="text" id="lname" name="lname"><br>
+            <label for="pwd">Password:</label><br>
+            <input type="password" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+            <input type="submit" value="Submit">
+
+
+          </form>
   </div>
   <div class="center">
   </div>
   <div class="right">
   <h1> Don't have an Account?</h1>
-  This is the sign up form link
+  <a class="center" href="default.asp" target="_blank">Sign up</a>
   </div>
 </html>
+

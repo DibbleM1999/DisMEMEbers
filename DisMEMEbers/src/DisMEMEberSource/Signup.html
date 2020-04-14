@@ -19,13 +19,22 @@
         </ul>
           </nav>
   <div class="left">
-  <h1>Sign Up</h1>
-  This is the Sign Up form
+   <form action="/action_page.php">      
+
+            <legend>Signup:</legend>
+            <label for="lname">Username:</label><br>
+            <input type="text" id="lname" name="lname"><br>
+            <label for="pwd">Password:</label><br>
+            <input type="password" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+            <input type="submit" value="Submit">
+
+
+          </form>
   </div>
   <div class="center">
   </div>
   <div class="right">
   <h1>Already have an Account?</h1>
-  This is the login form link
+    <a href="default.asp" target="_blank">Sign up</a>
   </div>
 </html>

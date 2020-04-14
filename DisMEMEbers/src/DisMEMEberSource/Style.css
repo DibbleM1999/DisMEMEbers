@@ -21,13 +21,16 @@ nav ul{
   list-style-type: none; 
   margin: 0;
   padding: 0;
+
 }
 li{
-  display: inline; 
+	display: inline-block;
 }
+
 li.searchbar{
-  float: right; 
+float: right;
 }
+
 .main{
     border: 2px solid black;
     border-radius: 5px;
@@ -98,9 +101,19 @@ box-shadow: 2px 2px;
   text-align: center;
   }
  /*for unam and psss forms*/
- /*
-input[type=tex], input[type=password  {
+ /*for unam and psss forms*/
+label{
+	color:maroon;
+    padding:5px;   
+}
+legend{
+	color: white;
+    font-weight: bold;
+    font-size:30px
+}
 
+
+input[type=tex], input[type=password  {
   padding:5px 10px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -109,13 +122,20 @@ input[type=tex], input[type=password  {
   transition: 0.5s;
   outline: none;
 }
-*/
-/*
+
 input[type=text], input[type=password] :focus  {
-  border: 3px solid maroon;
+  border: 5px solid maroon;
 }  
-  */
  /*for profile pic form*/
+.fieldset{
+    width: 60%;
+    float: left;
+    margin-right: 0; 
+    background-color: RGB(51,51,51);
+}
+.fieldset p{
+	
+ }
 input[type=file]  {
 
   padding:5px 10px;
@@ -131,4 +151,16 @@ input[type=file]  {
 input[type=file] :focus  {
   border: 3px solid maroon;
 }  
-  
+a:link, a:visited {
+  background-color: maroon;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+
+}
+
+a:hover, a:active {
+  background-color: red;
+}
