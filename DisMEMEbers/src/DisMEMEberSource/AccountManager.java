@@ -198,7 +198,6 @@ public class AccountManager {
     
     public String userRelationship(String user, String other, boolean following) throws Exception //Will return the String of the followed user. -1 if none.
     {                                               // True for following, false for unfollowing
-  
         try(var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql"))
         {
             if (following)
@@ -213,7 +212,6 @@ public class AccountManager {
                 }
                 else
                 {
-            
                     stmt = conn.prepareStatement("insert into follow "
                             + "(fuid, feduid) "
                             + "values (?, ?)");
