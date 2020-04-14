@@ -21,12 +21,12 @@ public class Admin extends Account
     
     public Account get_Account_by_name(String name) throws Exception
     {
-        return AccountManager.instance.getUser(AccountManager.instance.getID(name));
+        return AccountManager.getInstance().getUser(AccountManager.getInstance().getID(name));
     }
     
-    public Account get_Account_by_ID(int ID, AccountManager A)
+    public Account get_Account_by_ID(int ID, AccountManager A) throws Exception
     {
-        return AccountManager.instance.getUser(ID);
+        return AccountManager.getInstance().getUser(ID);
     }
     
     public ArrayList<String> get_history_by_name(String name, AccountManager A)
@@ -34,7 +34,7 @@ public class Admin extends Account
         return this.get_Account_by_name(name, A).get_history();
     }
     
-    public ArrayList<String> get_history_by_Id(int ID, AccountManager A)
+    public ArrayList<String> get_history_by_Id(int ID, AccountManager A) throws Exception
     {
         return this.get_Account_by_ID(ID, A).get_history();
     }
@@ -44,22 +44,22 @@ public class Admin extends Account
        this.get_Account_by_name(name, A).delete_history();
     }
     
-    public void delete_history_by_ID(int ID, AccountManager A)
+    public void delete_history_by_ID(int ID, AccountManager A) throws Exception
     {
         this.get_Account_by_ID(ID, A).delete_history();
     }
     
-    public void delete_user(int ID, AccountManager A) //Add the ability to store deleted accounts for a certain period of time for possible recovery.
+    public void delete_user(int ID, AccountManager A)  throws Exception//Add the ability to store deleted accounts for a certain period of time for possible recovery.
     {
         A.delete_by_ID(ID);
     }
     
-    public void delete_avatar_by_ID(int ID, AccountManager A)
+    public void delete_avatar_by_ID(int ID, AccountManager A) throws Exception
     {
         this.get_Account_by_ID(ID,A).setAvatar(null);
     }
     
-    public void ban_by_ID( int ID, AccountManager A, float time) //Time will most likely be in minutes or hours.
+    public void ban_by_ID( int ID, AccountManager A, float time)  throws Exception//Time will most likely be in minutes or hours.
     {
         this.get_Account_by_ID(ID, A).banned = true;
         this.get_Account_by_ID(ID, A).ban_time = time; //-1 for permaban
