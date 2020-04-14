@@ -10,11 +10,12 @@ import java.util.ArrayList;
  *
  * @author Owner
  */
-public class Admin extends Account 
+public class Admin extends Account
 {
     protected Admin(String user, String pass, String em)
     {
        super(user, pass, em);
+       isAdmin = 1;
     }
     
     

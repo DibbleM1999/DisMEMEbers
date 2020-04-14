@@ -33,6 +33,8 @@ public class Account {
 
     protected String email;
 
+    protected int isAdmin = 0;
+    
     protected int UID = -1;
     protected boolean banned = false;
     protected byte[] avatar = null;

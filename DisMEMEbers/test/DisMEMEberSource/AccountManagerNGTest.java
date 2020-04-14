@@ -44,7 +44,7 @@ public class AccountManagerNGTest {
     
     //being worked on
     @Test
-    public void testGetUser1() //To test if users can be accessed
+    public void testGetUser1() throws Exception //To test if users can be accessed
     {
         AccountManager A = new AccountManager();
         
