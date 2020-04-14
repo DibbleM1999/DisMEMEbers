@@ -14,13 +14,6 @@ import java.util.ArrayList;
  */
 
 /*
-CRUD REVIEW
-We Have
-- Creation of an account
-- Deletion of an account by UID
-
-We Need
-- Reading Functionality.
 - Update Functionality.
 */
 
@@ -28,7 +21,7 @@ public class AccountManager {
     //being worked on
     protected int num_acc; //Account count
     protected ArrayList<Account> Userlist = new ArrayList<>(); //list of users. Holds ints until a user class is made to fill the list.
-    public static AccountManager instance = new AccountManager();
+    private static AccountManager instance;
     
     protected AccountManager() 
     {
@@ -44,54 +37,57 @@ public class AccountManager {
         }
     }
     
+    public static AccountManager getInstance()
+    {
+        if (instance == null)
+            instance = new AccountManager();
+        return instance;
+    }
+    
     void createDatabase() throws Exception
     {
-        try(var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql;create=true"))
-        {
-            var stmt = conn.prepareStatement(
-                    "create table users ("
-                  + "uid integer primary key generated always as identity, "
-                  + "username varchar(32), "
-                  + "password varchar(32), "
-                  + "email varchar(52), "
-                  + "avatar blob"
-                  + ")");
-            stmt.executeUpdate();
-        }
-        catch(Exception e)
-        {
-            throw(e);
-        }
+        var stmt = DataBase.getInstance().prepareStatement(
+                "create table users ("
+              + "uid integer primary key generated always as identity, "
+              + "username varchar(32), "
+              + "password varchar(32), "
+              + "email varchar(52), "
+              + "avatar blob, "
+              + "isAdmin int"
+              + ")");
+        stmt.executeUpdate();
     }
     
     public int add(Account newuser) throws Exception//finish when user class is made
     {
         Userlist.add(newuser);
-        try (var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql"))
-        {
-            var stmt = conn.prepareStatement("insert into users "
-                    + "(username, password, email, avatar) "
-                    + "values (?, ?, ?, ?)");
-            stmt.setString(1, newuser.username);
-            stmt.setString(2, newuser.password);
-            stmt.setString(3, newuser.email);
-            stmt.setBytes(4, new byte[]{3, 1, 4, 1, 5, 9});
-            stmt.executeUpdate();
-        }
-        catch(Exception e)
-        {
-            throw(e);
-        }
+        
+        var stmt = DataBase.getInstance().prepareStatement("insert into users "
+                + "(username, password, email, avatar, isAdmin) "
+                + "values (?, ?, ?, ?)");
+        stmt.setString(1, newuser.username);
+        stmt.setString(2, newuser.password);
+        stmt.setString(3, newuser.email);
+        stmt.setBytes(4, new byte[]{3, 1, 4, 1, 5, 9});
+        stmt.setInt(5, newuser.isAdmin);
+        stmt.executeUpdate();
+            
         return newuser.getUID();
     }
     
-    public Account getUser(int ID) //will return user once created
+    public Account getUser(int ID) throws Exception//will return user once created
     {
         for(int i = 0; i < Userlist.size(); i++)
         {
             if(Userlist.get(i).UID == ID)
                 return Userlist.get(i);
         }
+        
+        var stmt = DataBase.getInstance().prepareStatement("select username from users where uid=?");
+        stmt.setInt(1, ID);
+        var result = stmt.executeQuery();
+        String user = result.getString(1);
+        System.out.println(user);
         
         Account fail = new Account("","",""); //Blank account to show there is no account of the given ID.
         return fail;
@@ -104,22 +100,74 @@ public class AccountManager {
         //    if(Userlist.get(i).getUsername() == user)
         //        return Userlist.get(i).getUID();
         //}
-        try(var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql"))
-        {
-            var stmt = conn.prepareStatement("select uid from users where username=? and password IS NOT NULL");
-            stmt.setString(1, user);
-            var result = stmt.executeQuery();
-            int uid = result.getInt(1);
-            System.out.println(uid);
-            return uid;
-        }
-        catch(Exception e)
-        {
-            throw(e);
-        }
+        var stmt = DataBase.getInstance().prepareStatement("select uid from users where username=? and password IS NOT NULL");
+        stmt.setString(1, user);
+        var result = stmt.executeQuery();
+        int uid = result.getInt(1);
+        System.out.println(uid);
+        return uid;
     }
     
+    public int getIsAdmin(int UID) throws Exception
+    {
+        var stmt = DataBase.getInstance().prepareStatement("select isAdmin from users where uid=?");
+        stmt.setInt(1, UID);
+        var result = stmt.executeQuery();
+        int admin = result.getInt(1);
+        return admin;
+    }
+    
+    public byte[] getAvatar(int ID) throws Exception
+    {
+        var stmt = DataBase.getInstance().prepareStatement("select avatar from users where uid=?");
+        stmt.setInt(1, ID);
+        var result = stmt.executeQuery();
+        byte[] avatar = result.getBytes(1);
+        return avatar;
+    }
+    
+    public void setAvatar(int ID, byte[] data) throws Exception
+    {
+        var stmt = DataBase.getInstance().prepareStatement("update users set avatar=? where uid=?");
+        stmt.setBytes(1, data);
+        stmt.setInt(2, ID);
+        stmt.executeUpdate();
+    }
 
+    public String getEmail(int ID) throws Exception
+    {
+        var stmt = DataBase.getInstance().prepareStatement("select email from users where uid=?");
+        stmt.setInt(1, ID);
+        var result = stmt.executeQuery();
+        String email = result.getString(1);
+        return email;
+    }
+    
+    public void setEmail(int ID, String data) throws Exception
+    {
+        var stmt = DataBase.getInstance().prepareStatement("update users set email=? where uid=?");
+        stmt.setString(1, data);
+        stmt.setInt(2, ID);
+        stmt.executeUpdate();
+    }
+    
+    public  String getPassword(int ID) throws Exception
+    {
+        var stmt = DataBase.getInstance().prepareStatement("select password from users where uid=?");
+        stmt.setInt(1, ID);
+        var result = stmt.executeQuery();
+        String password = result.getString(1);
+        return password;
+    }
+    
+    public void setPassword(int ID, String data) throws Exception
+    {
+        var stmt = DataBase.getInstance().prepareStatement("update users set password=? where uid=?");
+        stmt.setString(1, data);
+        stmt.setInt(2, ID);
+        stmt.executeUpdate();
+    }
+    
     public void delete_by_ID(int ID) throws Exception
     {
         //for(int i = 0; i < Userlist.size(); i++)
@@ -131,16 +179,9 @@ public class AccountManager {
         //        break;
         //    }   
         //}
-        try(var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql"))
-        {
-            var stmt = conn.prepareStatement("delete from users where uid=?");
-            stmt.setInt(1, ID);
-            stmt.executeUpdate();
-        }
-        catch(Exception e)
-        {
-            throw(e);
-        }
+        var stmt = DataBase.getInstance().prepareStatement("delete from users where uid=?");
+        stmt.setInt(1, ID);
+        stmt.executeUpdate();
     }
     
     public boolean name_check(String username)
