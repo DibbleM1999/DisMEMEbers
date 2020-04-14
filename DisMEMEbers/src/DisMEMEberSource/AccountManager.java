@@ -21,14 +21,14 @@ public class AccountManager {
     //being worked on
     protected int num_acc; //Account count
     protected ArrayList<Account> Userlist = new ArrayList<>(); //list of users. Holds ints until a user class is made to fill the list.
-    private static AccountManager instance;
+    private static AccountManager getInstance;
     
     protected AccountManager() 
     {
         //nothing yet. add file parsing late r with database.
         try{
         if( !new File("disMEMEber_db.sql").exists() ){
-        AccountManager.instance.createDatabase();
+        AccountManager.getInstance.createDatabase();
             }
         }
         catch(Exception e)
@@ -39,9 +39,9 @@ public class AccountManager {
     
     public static AccountManager getInstance()
     {
-        if (instance == null)
-            instance = new AccountManager();
-        return instance;
+        if (getInstance == null)
+            getInstance = new AccountManager();
+        return getInstance;
     }
     
     void createDatabase() throws Exception
