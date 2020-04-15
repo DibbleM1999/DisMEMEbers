@@ -46,19 +46,24 @@ public class PostManager {
                             + "imglocation varchar(52), "
                             + "date varchar(10), "
                             + ")");
+            stmt.executeUpdate();
         } catch(Exception e){
                throw new RuntimeException(e);
         }
     }
-    public static void createPost(Post new_post) throws SQLException{
+    public static void createPost(Post new_post){
                   //use post class / create post class instead of what is below 
-        connection.createStatement().execute(
+        try {
+            connection.createStatement().execute(
                 "insert into post values"+
                 new_post.getUserID()+
                 new_post.getPostID()+
                 new_post.getText()+
                 new_post.getImageLocation()+
                 new_post.getDate());
+        }catch(Exception e){
+            throw new RuntimeException(e);
+        }
        
     } 
 }
