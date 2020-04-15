@@ -3,6 +3,8 @@
  * @author Timothy Fowler
  */
 
+package DisMEMEberSource;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
