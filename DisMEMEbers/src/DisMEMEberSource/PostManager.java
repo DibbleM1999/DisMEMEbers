@@ -51,19 +51,40 @@ public class PostManager {
                throw new RuntimeException(e);
         }
     }
+    
     public static void createPost(Post new_post){
                   //use post class / create post class instead of what is below 
         try {
-            instance.connection.createStatement().execute(
+            var stmt = instance.connection.prepareStatement(
                 "insert into post values"+
                 new_post.getUserID()+
                 new_post.getPostID()+
                 new_post.getText()+
                 new_post.getImageLocation()+
                 new_post.getDate());
+            stmt.executeUpdate();
         }catch(Exception e){
             throw new RuntimeException(e);
         }
-       
-    } 
+    }
+    
+    public static void readPost(int postID){
+        try{
+            var stmt = instance.connection.prepareStatement("select imglocation from posts where pid=?",postID);
+            stmt.executeQuery();
+        }
+        catch(Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public static void deletePost( int postID ) {
+        try{
+            var stmt = instance.connection.prepareStatement("delete from posts where pid=?",postID);
+            stmt.executeUpdate(); 
+        }
+        catch(Exception e){
+            throw new RuntimeException(e);
+        }
+    }
 }
