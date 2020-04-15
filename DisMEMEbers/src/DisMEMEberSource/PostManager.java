@@ -17,10 +17,10 @@ import java.util.logging.Logger;
 
 public class PostManager {
     public static Connection connection;
-    //public PostManager instance;
+    public static PostManager instance;
     //public static Post instance = new Post();
     public void PostManager(){
-        connection = getConnection();
+        instance.connection = getConnection();
         setupTable();
     }
     
@@ -38,7 +38,7 @@ public class PostManager {
     public static void setupTable() 
     {
         try {
-            var stmt = connection.prepareStatement(
+            var stmt = instance.connection.prepareStatement(
                     "create table posts ("
                             + "uid integer foreign key, "
                             + "pid integer primary key generated always as identity, "
@@ -54,7 +54,7 @@ public class PostManager {
     public static void createPost(Post new_post){
                   //use post class / create post class instead of what is below 
         try {
-            connection.createStatement().execute(
+            instance.connection.createStatement().execute(
                 "insert into post values"+
                 new_post.getUserID()+
                 new_post.getPostID()+
