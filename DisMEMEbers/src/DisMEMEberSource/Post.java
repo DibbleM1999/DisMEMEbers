@@ -12,8 +12,6 @@ public class Post {
     char image;
     char date;
     
-    public static Post instance;
-    
     public Post(int userID, char text, char imageLocation, char dateOfPost)
     {
         this.postID = Post.counter++;

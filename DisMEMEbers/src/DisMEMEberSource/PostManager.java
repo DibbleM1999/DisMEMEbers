@@ -50,15 +50,15 @@ public class PostManager {
                throw new RuntimeException(e);
         }
     }
-    public static void createPost(int userID, int postID,char text,char imageLocation,char date) throws SQLException{
+    public static void createPost(Post new_post) throws SQLException{
                   //use post class / create post class instead of what is below 
         connection.createStatement().execute(
                 "insert into post values"+
-                Post.instance.getUserID()+
-                Post.instance.getPostID()+
-                Post.instance.getText()+
-                Post.instance.getImageLocation()+
-                Post.instance.getDate());
+                new_post.getUserID()+
+                new_post.getPostID()+
+                new_post.getText()+
+                new_post.getImageLocation()+
+                new_post.getDate());
        
     } 
 }
