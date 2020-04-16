@@ -25,10 +25,12 @@ public class AccountManager {
     
     protected AccountManager() 
     {
-        //nothing yet. add file parsing late r with database.
-        try{
-        if( !new File("disMEMEber_db.sql").exists() ){
-        AccountManager.getInstance.createDatabase();
+        // Weird Recursion bug causing stack overflow.
+        try
+        {
+            if( !new File("disMEMEber_db.sql").exists() )
+            {
+                AccountManager.createDatabase();
             }
         }
         catch(Exception e)
@@ -44,7 +46,7 @@ public class AccountManager {
         return getInstance;
     }
     
-    void createDatabase() throws Exception
+    static void createDatabase() throws Exception
     {
         var stmt = DataBase.getInstance().prepareStatement(
                 "create table users ("
@@ -58,7 +60,7 @@ public class AccountManager {
         stmt.executeUpdate();
     }
     
-    public int add(Account newuser) throws Exception//finish when user class is made
+    public int add(Account newuser) throws Exception//finish when user class is made 
     {
         Userlist.add(newuser);
         
