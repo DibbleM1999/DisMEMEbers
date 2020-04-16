@@ -21,13 +21,16 @@ nav ul{
   list-style-type: none; 
   margin: 0;
   padding: 0;
+
 }
 li{
-  display: inline; 
+	display: inline-block;
 }
+
 li.searchbar{
-  float: right; 
+float: right;
 }
+
 .main{
     border: 2px solid black;
     border-radius: 5px;
@@ -63,14 +66,101 @@ li.searchbar{
 .tags h2 {
     text-align: center; 
 }
-.tags p{
+.tag {
     text-align: center;
     background-color: RGB(89, 20, 20);
     border: 2px solid RGB(100, 5, 5);
     box-shadow: 2px 2px;
     font-weight: bold;
-    
     width: 25%;
     margin: auto;
     
+}
+
+.left{
+  margin: auto;
+ float: left;
+ width: 50%;
+ height: 150px;
+ border: 1px solid white;
+    border-radius: 3px;
+    border-style: outset;
+    box-shadow: 2px 2px;
+}
+.right{
+  border: 1px solid white;
+  width: 49%;
+  height: 150px;
+  float: right;
+  border-radius: 3px;
+border-style: outset;
+box-shadow: 2px 2px;
+}
+.left h1, .right h1{
+  color: white;
+  text-align: center;
+  }
+ /*for unam and psss forms*/
+ /*for unam and psss forms*/
+label{
+	color:maroon;
+    padding:5px;   
+}
+legend{
+	color: white;
+    font-weight: bold;
+    font-size:30px
+}
+
+
+input[type=tex], input[type=password  {
+  padding:5px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid white;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=text], input[type=password] :focus  {
+  border: 5px solid maroon;
+}  
+ /*for profile pic form*/
+.fieldset{
+    width: 60%;
+    float: left;
+    margin-right: 0; 
+    background-color: RGB(51,51,51);
+}
+.fieldset p{
+	
+ }
+input[type=file]  {
+
+  padding:5px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid black;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+
+input[type=file] :focus  {
+  border: 3px solid maroon;
+}  
+a:link, a:visited {
+  background-color: maroon;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+
+}
+
+a:hover, a:active {
+  background-color: red;
 }

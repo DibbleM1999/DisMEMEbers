@@ -1,0 +1,52 @@
+
+<html>
+    <head>
+        <title>DisMEMEber</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery.min.js"></script>
+        <script src="bootstrap.bundle.min.js"></script>
+        <link rel=stylesheet href="Styles.css">
+    </head>
+    <body>
+        <header>
+              <h1>DisMEMEber<h1>
+        </header>
+        <nav>
+        <ul>
+          <li>
+          <form>
+  		  <select id="userOptions" name="userDropdown">
+  		  <option value="au">username and image</option>
+  		  <option value="ca">logIn</option>
+  		  <option value="usa">SignUp</option>
+  		  </select>
+		  </form>
+		  <li>
+          <li class="searchbar">
+          <form>
+  			<input type="text" name="search" placeholder="Search..">
+		  </form>
+		  </li>
+        </ul>
+          </nav>
+  <div class="left">
+   <form action="/action_page.php">      
+
+            <legend>Signup:</legend>
+            <label for="lname">Username:</label><br>
+            <input type="text" id="lname" name="lname"><br>
+            <label for="pwd">Password:</label><br>
+            <input type="password" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+            <input type="submit" value="Submit">
+
+
+          </form>
+  </div>
+  <div class="center">
+  </div>
+  <div class="right">
+  <h1>Already have an Account?</h1>
+    <a href="default.asp" target="_blank">Sign up</a>
+  </div>
+</html>
