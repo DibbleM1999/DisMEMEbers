@@ -36,6 +36,8 @@ public class Account {
     protected int UID = -1;
 
     protected boolean banned = false;
+    
+    protected float ban_time = 0;
 
     protected byte[] avatar = null;
     
@@ -146,10 +148,10 @@ public class Account {
 
     }
     
-    public void resetUID() //AccountManager testing
-    {
-        this.next_UID = 1000;
-    }
+    //public void resetUID() //AccountManager testing
+    //{
+        //this.next_UID = 1000;
+    //}
     
     public int nextid()
     {
@@ -193,6 +195,12 @@ public class Account {
     public String get_history_at_i(int index)
     {
         return this.History.get(index);
+    }
+    
+    public void sendreport(String reason, int postID, byte[] img)
+    {
+        Report sendinfo = new Report(reason,postID,img);
+        //send the report to post manager once the ability to do so is made.
     }
     
 }
