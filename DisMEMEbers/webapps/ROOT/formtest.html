@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Test</title>
+    <meta charset="utf-8">
+    <script src="jquery.min.js"></script>
+    <script src="formtest.js"></script>
+</head>
+
+<body>
+
+<div>Name</div>
+<div><input id='name' size='20'></div>
+
+<div><label><input type='checkbox' id="pobox" value=1>Ship to PO box</label></div>
+
+<div>State: 
+    <select id='state'>
+        <option>Alabama</option>
+        <option>Alaska</option>
+        <option>Ohio</option>
+        <option>Kyrgyzstan</option>
+    </select>
+</div>
+
+<div><button onclick="submitForm()">Place Order</button></div>
+
+<div id='statusdiv'></div>
+
+</body>
+</html>
