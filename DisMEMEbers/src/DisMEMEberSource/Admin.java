@@ -90,7 +90,7 @@ public class Admin extends Account
         if(this.reporton != null)
         {
             //method 1: (remove only image)
-            Post badpost = P.get_post_by_ID(this.reporton.getpostId(););
+            Post badpost = P.get_post_by_ID(this.reporton.getpostId());
             badpost.img = null;
         
             //method 2: (remove whole post)

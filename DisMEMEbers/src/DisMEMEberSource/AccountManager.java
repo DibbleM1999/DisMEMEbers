@@ -90,7 +90,7 @@ public class AccountManager {
     
     public void Clear() //KILL EVERYONE
     {
-        Userlist.get(0).resetUID();
+        //Userlist.get(0).resetUID();
         Userlist.clear();
     }
     

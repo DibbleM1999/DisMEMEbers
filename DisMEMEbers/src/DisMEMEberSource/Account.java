@@ -148,10 +148,10 @@ public class Account {
 
     }
     
-    //public void resetUID() //AccountManager testing
-    //{
-        //this.next_UID = 1000;
-    //}
+    public void resetUID() //AccountManager testing
+    {
+        this.next_UID = 1000;
+    }
     
     public int nextid()
     {
