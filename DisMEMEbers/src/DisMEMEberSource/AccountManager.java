@@ -140,7 +140,7 @@ public class AccountManager {
             throw(e);
         }
     }
-    
+    /*
     public boolean name_check(String username)
     {
         for(int i=0; i<Userlist.size();i++)
@@ -164,29 +164,95 @@ public class AccountManager {
         }
         return false;
     }
-    
-    public boolean name_check(String username)
+    */
+    public boolean name_check(String username) throws Exception // true if in use
     {
-        for(int i=0; i<Userlist.size();i++)
+        /*for(int i=0; i<Userlist.size();i++)
         {
             if(Userlist.get(i).getUsername() == username)
             {
                 return true;
             }
         }
-        return false;
+        return false;*/
+        
+        try(var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql"))
+        {
+            var stmt = conn.prepareStatement("select from users where username=?");
+            stmt.setString(1, username);
+            var result = stmt.executeQuery();
+            int x = result.getInt(1);
+            System.out.println(x);
+            if (x == -1)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        catch(Exception e)
+        {
+            throw(e);
+        }
+        
     }
-    
-    public boolean email_check(String mail)
+    public boolean email_check(String mail) throws Exception //true if in use
     {
-        for(int i=0; i<Userlist.size();i++)
+        /*for(int i=0; i<Userlist.size();i++)
         {
             if(Userlist.get(i).getEmail() == mail)
             {
                 return true;
             }
         }
-        return false;
+        return false;*/
+        
+        try(var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql"))
+        {
+            var stmt = conn.prepareStatement("select from users where email=?");
+            stmt.setString(1, mail);
+            var result = stmt.executeQuery();
+            int x = result.getInt(1);
+            System.out.println(x);
+            if (x == -1)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        catch(Exception e)
+        {
+            throw(e);
+        }
+    }
+    
+    public String find_user(String username) throws Exception // returns username if username is in use
+    {
+        try(var conn = java.sql.DriverManager.getConnection("jdbc:derby:disMEMEber_db.sql"))
+        {
+            var stmt = conn.prepareStatement("select username from users where username=?");
+            stmt.setString(1, username);
+            var result = stmt.executeQuery();
+            String x = result.getString(1);
+            System.out.println(x);
+            if (x.equals("-1"))
+            {
+                return "User not found";
+            }
+            else
+            {
+                return x;
+            }
+        }
+        catch(Exception e)
+        {
+            throw(e);
+        }
     }
     
     public void Clear() //KILL EVERYONE
