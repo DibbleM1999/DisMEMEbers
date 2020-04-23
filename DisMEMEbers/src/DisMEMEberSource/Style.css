@@ -46,7 +46,7 @@ float: right;
     text-align: center; 
     padding: 10px;
     background-color: RGB(75,75,75);
-    width:600;
+    width:600px;
     border: 1px solid black;
     border-radius: 3px;
     border-style: outset;
@@ -113,7 +113,7 @@ legend{
 }
 
 
-input[type=tex], input[type=password  {
+input[type=tex], input[type=password]  {
   padding:5px 10px;
   margin: 8px 0;
   box-sizing: border-box;
