@@ -66,49 +66,43 @@ public class Admin extends Account
         this.get_Account_by_ID(ID, A).ban_time = time; //-1 for permaban
     }
     
-    public void getreport() //have public void getreport(PostManager P) later
+    public void getreport(PostManager P)
     {
-        /*
-            //Wanted functionality:
         if(this.reporton == null)
         {
             this.reporton = P.getReport();
         }
         else
         {
+            return;
             //tell admin to finish report
         }
-        */
+        
     }
     
-    public void reportPositive() //have public void getreport(PostManager P) later
+    public void reportPositive(PostManager P)
     {
         //This is when the post breaks any rules
-        /*
+        
             //more code to impliment later:
             
         if(this.reporton != null)
         {
-            //method 1: (remove only image)
-            Post badpost = P.get_post_by_ID(this.reporton.getpostId());
-            badpost.img = null;
+            P.deletePost(this.reporton.getpostID());
         
-            //method 2: (remove whole post)
-            P.delete_post_by_ID(this.reporton.getpostId());
-        
-            after either method:
             this.reporton = null;
         }
         else
         {
+            return;
             //send back a problem message
         }
             
             //bans can be done alsewhere.
-        */
+        
     }
     
-    public void reportNegative() //don't need to pull in a postmanager for this one.
+    public void reportNegative()
     {
         //This is when the post breaks no rules
         this.reporton = null;
