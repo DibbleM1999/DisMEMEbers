@@ -132,7 +132,7 @@ input[type=text], input[type=password] {
   outline: none;
 }
 
-(input[type=text], input[type=password]:focus  {
+input[type=text], input[type=password]:focus  {
   border: 5px solid maroon;
 } 
 
