@@ -1,21 +1,28 @@
 html{
     background-color: RGB(25,25,25); 
 }
-
+a{
+    text-decoration: none;
+    color: white;
+}
 header {
     height: 75px;
     width:100%;
     background-color: black; 
     color: white;
     text-align: center;
-    
-    
+
+
 }
 nav {
     background-color: black;
     color:white;
     margin: 0;
     padding: 0;
+}
+select{
+    color: white;
+  background-color: black;
 }
 nav ul{
   list-style-type: none; 
@@ -24,7 +31,7 @@ nav ul{
 
 }
 li{
-	display: inline-block;
+  display: inline-block;
 }
 
 li.searchbar{
@@ -46,7 +53,7 @@ float: right;
     text-align: center; 
     padding: 10px;
     background-color: RGB(75,75,75);
-    width:600px;
+    width:600;
     border: 1px solid black;
     border-radius: 3px;
     border-style: outset;
@@ -74,10 +81,10 @@ float: right;
     font-weight: bold;
     width: 25%;
     margin: auto;
-    
+
 }
 
-.left{
+.left {
   margin: auto;
  float: left;
  width: 50%;
@@ -100,20 +107,20 @@ box-shadow: 2px 2px;
   color: white;
   text-align: center;
   }
- /*for unam and psss forms*/
- /*for unam and psss forms*/
+ /for unam and psss forms/
+ /for unam and psss forms/
 label{
-	color:maroon;
-    padding:5px;   
+    color:maroon;
+    padding:5px;
 }
 legend{
-	color: white;
+    color: white;
     font-weight: bold;
     font-size:30px
 }
 
 
-input[type=tex], input[type=password]  {
+input[type=text], input[type=password] {
   padding:5px 10px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -123,19 +130,18 @@ input[type=tex], input[type=password]  {
   outline: none;
 }
 
-input[type=text], input[type=password] :focus  {
+(input[type=text], input[type=password]:focus  {
   border: 5px solid maroon;
-}  
- /*for profile pic form*/
+} 
+
+ /for profile pic form/
 .fieldset{
     width: 60%;
     float: left;
     margin-right: 0; 
     background-color: RGB(51,51,51);
 }
-.fieldset p{
-	
- }
+
 input[type=file]  {
 
   padding:5px 10px;
@@ -148,19 +154,6 @@ input[type=file]  {
 }
 
 
-input[type=file] :focus  {
+input[type=file]:focus  {
   border: 3px solid maroon;
-}  
-a:link, a:visited {
-  background-color: maroon;
-  color: white;
-  padding: 14px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-
-}
-
-a:hover, a:active {
-  background-color: red;
 }
