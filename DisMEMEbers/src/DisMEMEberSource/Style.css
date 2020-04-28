@@ -53,7 +53,7 @@ float: right;
     text-align: center; 
     padding: 10px;
     background-color: RGB(75,75,75);
-    width:600;
+    width:600px;
     border: 1px solid black;
     border-radius: 3px;
     border-style: outset;
@@ -130,11 +130,11 @@ input[type=text], input[type=password] {
   outline: none;
 }
 
-(input[type=text], input[type=password]:focus  {
+input[type=text], input[type=password]:focus  {
   border: 5px solid maroon;
 } 
 
- /for profile pic form/
+ /*for profile pic form*/
 .fieldset{
     width: 60%;
     float: left;
