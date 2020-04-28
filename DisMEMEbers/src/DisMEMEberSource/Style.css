@@ -109,6 +109,9 @@ box-shadow: 2px 2px;
   }
  /*for unam and psss forms*/
  /*for unam and psss forms*/
+ h2{
+     color: white;
+ }
 label{
     color:maroon;
     padding:5px;
