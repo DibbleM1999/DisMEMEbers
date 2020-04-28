@@ -1,7 +1,8 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>DisMEMEber</title>
         <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
        <meta charset="utf-8">
@@ -19,31 +20,42 @@
         <nav>
         <ul>
           <li>
-          <form>
-    	  <select id="userOptions" name="userDropdown">
-  		  <option value="au">username and image</option>
-  		  <option value="ca"><a href="Login.html">LogIn</a></option>
-  		  <option value="usa"><a href="SignUp.html">SignUp</a></option>
-        <option value="uk"><a href="ProfileSettings.html">Profile</a></option>
-        
-  		  </select>
-		  </form>
-		  <li>
+          <div class="dropdown">
+              <span>username and image</span>
+              <img src="logojim.png" alt="Basic_Jim" height="21" width="21">
+              <div class="dropdown-content">
+                  <!-- if you are logged in instead of Signup and login it is just logout -->
+                  <a href="Signup.html">Signup</a>
+                  <a href="Login.html">Login</a>
+                  <a href="ProfileSettings.html">Profile</a>
+              </div>
+          </div>
+          </li>
           <li class="searchbar">
           <form>
-  			<input type="text" name="search" placeholder="Search..">
-		  </form>
-		  </li>
+              <input type="text" name="search" placeholder="Search..">
+          </form>
+          </li>
         </ul>
           </nav>
-        
+
         <div class="main">
         <h1 align="center">Home</h1>
+        <div class=add>
+        <form>
+        <h3>Add meme</h3>
+         <input type="text" name="addMeme" placeholder="fun title"><br></br>
+          <label for="myfile">Select a file:</label>
+         <input type="file" id="myfile" name="myfile"><br><br>
+         <input type="submit" value="Submit">
+          </form>
+          </div>
+
         <p>here are your memes</p>
         <p>Here are more memes</p>
-        
+
         </div>
-          
+
         <div class="tags">
         <h2>Suggested Tags</h2>
         <p class="tag">#funnyMEME</p>

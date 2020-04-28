@@ -13,14 +13,18 @@ header {
     background-color: black; 
     color: white;
     text-align: center;
-    
-    
+
+
 }
 nav {
     background-color: black;
     color:white;
     margin: 0;
     padding: 0;
+}
+select{
+    color: white;
+  background-color: black;
 }
 select{
     color: white;
@@ -55,7 +59,7 @@ float: right;
     text-align: center; 
     padding: 10px;
     background-color: RGB(75,75,75);
-    width:600;
+    width:600px;
     border: 1px solid black;
     border-radius: 3px;
     border-style: outset;
@@ -83,7 +87,7 @@ float: right;
     font-weight: bold;
     width: 25%;
     margin: auto;
-    
+
 }
 
 .left {
@@ -111,12 +115,43 @@ box-shadow: 2px 2px;
   }
  /*for unam and psss forms*/
  /*for unam and psss forms*/
+ .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  
+  z-index: 1;
+}
+.dropdown-content a {
+      color: black;
+  padding: 1px 6px;
+  
+  display: block;
+
+}
+.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.add{
+    text-align: center; 
+}
+ h2{
+     color: white;
+ }
 label{
-	color:maroon;
-    padding:5px;   
+    color:maroon;
+    padding:5px;
 }
 legend{
-	color: white;
+    color: white;
     font-weight: bold;
     font-size:30px
 }
@@ -158,6 +193,7 @@ input[type=file]  {
 
 input[type=file]:focus  {
   border: 3px solid maroon;
+
 }  
 
 

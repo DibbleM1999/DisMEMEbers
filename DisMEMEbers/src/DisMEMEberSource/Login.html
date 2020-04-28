@@ -6,23 +6,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="jquery.min.js"></script>
         <script src="bootstrap.bundle.min.js"></script>
-        <link rel=stylesheet href="Styles.css">
+        <link rel=stylesheet href="Style.css">
     </head>
     <body>
         <header>
               <h1>DisMEMEber</h1>
         </header>
         <nav>
-        <<ul>
+        <ul>
           <li>
-          <form>
-  		  <select id="userOptions" name="userDropdown">
-  		  <option value="au">username and image</option>
-  		  <option value="ca">logIn</option>
-  		  <option value="usa">SignUp</option>
-  		  </select>
-		  </form>
-		  <li>
+          <div class="dropdown">
+              <span>username and image</span>
+              <img src="logojim.png" alt="Basic_Jim" height="21" width="21">
+              <div class="dropdown-content">
+                  <a href="Signup.html">Signup</a>
+                  <a href="Home.html">Home</a>
+              </div>
+          </div>
+		  </li>
           <li class="searchbar">
           <form>
   			<input type="text" name="search" placeholder="Search..">
@@ -33,7 +34,7 @@
   <div class="left">
   
   <form action="/action_page.php">      
-            <legend>Login:</legend>
+            <h2>Login:</h2>
             <label for="lname">Username:</label><br>
             <input type="text" id="lname" name="lname"><br>
             <label for="pwd">Password:</label><br>
@@ -47,7 +48,7 @@
   </div>
   <div class="right">
   <h1> Don't have an Account?</h1>
-  <a class="center" href="default.asp" target="_blank">Sign up</a>
+  <a class="center" href="Signup.html" target="_blank">Sign up</a>
   </div>
 </html>
 
