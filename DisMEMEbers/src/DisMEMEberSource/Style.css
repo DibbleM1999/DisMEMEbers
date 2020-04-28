@@ -134,6 +134,9 @@ box-shadow: 2px 2px;
 .dropdown:hover .dropdown-content {
   display: block;
 }
+.add{
+    text-align: center; 
+}
  h2{
      color: white;
  }
