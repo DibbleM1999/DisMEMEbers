@@ -197,10 +197,10 @@ public class Account {
         return this.History.get(index);
     }
     
-    public void sendreport(String reason, int postID, byte[] img)
+    public void sendreport(String reason, int postID, byte[] img, PostManager P)
     {
         Report sendinfo = new Report(reason,postID,img);
-        //send the report to post manager once the ability to do so is made.
+        P.add_report(sendinfo);
     }
     
 }
