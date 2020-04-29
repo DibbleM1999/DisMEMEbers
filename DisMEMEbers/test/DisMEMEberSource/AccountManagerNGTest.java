@@ -32,10 +32,14 @@ public class AccountManagerNGTest {
 
     @BeforeMethod
     public void setUpMethod() throws Exception {
+        Account user = new Account("Ethan","TheBrunester22!", "comingthroughtheback@gmail.com");
+        AccountManager.getInstance().add(user);
     }
 
     @AfterMethod
     public void tearDownMethod() throws Exception {
+        AccountManager.getInstance().printTable();
+        AccountManager.getInstance().Clear();
     }
     
     /**
@@ -43,70 +47,79 @@ public class AccountManagerNGTest {
      */
     
     //being worked on
-    @Test
-    public void testGetUser1() throws Exception //To test if users can be accessed
-    {
-        AccountManager A = new AccountManager();
-        
-        assertNotEquals(A.getUser(1000),-1);
-        
-    }
     
     @Test
     public void testAddUser1() throws Exception //To test adding a user
-    {
-        AccountManager A = new AccountManager();
-        
-        Account user = new Account("Hayden","Pass", "yeeyeeboy12@gmail.com");
-        int testID = A.add(user);
-        assertEquals(A.getUser(testID).username,"Hayden");
-        assertEquals(A.getUser(testID).password,"Pass");
-        A.Clear();
-    }
-    
-    @Test
-    public void testAddUser2() throws Exception //To test adding a user and check if it exists via ID
-    {
-        AccountManager A = new AccountManager();
-        
+    {    
         Account user = new Account("Hayden", "Pass", "yeeyeeboy12@gmail.com");
-        int testID = A.add(user);
-        assertEquals(A.getUser(testID + 1).username,"");
-        assertEquals(A.getUser(testID + 1).password,"");
-        A.Clear();
-    }
-    
-    @Test
-    public void testAddUser3() throws Exception //To test adding a user and check if it exists via Username.
-    {
-        AccountManager A = new AccountManager();
+        AccountManager.getInstance().add(new Account("Jack", "Pass", "boy12@gmail.com"));
+        int testID = AccountManager.getInstance().add(user);
         
-        Account user = new Account("Hayden","Pass", "yeeyeeboy12@gmail.com");
-        int testID = A.add(user);
-        assertEquals(A.getID("Hayden"),testID);
-        A.Clear();
-    }
-    
-    @Test
-    public void testAddUser4() throws Exception //To test adding a user and check if it exists via Username.
-    {
-        AccountManager A = new AccountManager();
+        assertEquals(AccountManager.getInstance().getUser(testID), "Hayden");
+        assertEquals(AccountManager.getInstance().getPassword(testID), "Pass");
         
-        Account user = new Account("Hayden","Pass", "yeeyeeboy12@gmail.com");
-        A.add(user);
-        assertEquals(A.getID("Hayde"),-1);
-        A.Clear();
+        testID = AccountManager.getInstance().getID("Jack");
+        assertEquals(AccountManager.getInstance().getUser(testID), "Jack");
+        assertEquals(AccountManager.getInstance().getPassword(testID), "Pass");
     }
     
+//    @Test
+//    public void testAddUser2() throws Exception //To test adding a user and check if it exists via ID
+//    {
+//        AccountManager A = new AccountManager();
+//        
+//        Account user = new Account("Hayden", "Pass", "yeeyeeboy12@gmail.com");
+//        int testID = A.add(user);
+//        assertEquals(A.getUser(testID + 1).username,"");
+//        assertEquals(A.getUser(testID + 1).password,"");
+//        A.Clear();
+//    }
+//    
+//    @Test
+//    public void testAddUser3() throws Exception //To test adding a user and check if it exists via Username.
+//    {
+//        AccountManager A = new AccountManager();
+//        
+//        Account user = new Account("Hayden","Pass", "yeeyeeboy12@gmail.com");
+//        int testID = A.add(user);
+//        assertEquals(A.getID("Hayden"),testID);
+//        A.Clear();
+//    }
+//    
+//    @Test
+//    public void testAddUser4() throws Exception //To test adding a user and check if it exists via Username.
+//    {
+//        AccountManager A = new AccountManager();
+//        
+//        Account user = new Account("Hayden","Pass", "yeeyeeboy12@gmail.com");
+//        A.add(user);
+//        assertEquals(A.getID("Hayde"),-1);
+//        A.Clear();
+//    }
+//    
+//    @Test
+//    public void printTable() throws Exception
+//    {
+//        AccountManager.getInstance().printTable();
+//    }
     
     @Test
     public void testRemoveUser1() throws Exception //To test removing a user by searching ID.
     {
-        AccountManager A = new AccountManager();
         Account user = new Account("Hayden","Pass", "yeeyeeboy12@gmail.com");
-        int testID = A.add(user);
-        assertEquals(A.getID("Hayden"),testID);
-        A.delete_by_ID(testID);
-        assertEquals(A.getID("Hayden"),-1);
+        AccountManager.getInstance().add(user);
+        int TestID = AccountManager.getInstance().getID("Hayden");
+        AccountManager.getInstance().printTable();
+        AccountManager.getInstance().delete_by_ID(TestID);
+        assertEquals(AccountManager.getInstance().getID("Hayden"), -1);
     }
+    
+    @Test
+    public void updateEmail() throws Exception
+    {
+        int ID = AccountManager.getInstance().getID("Ethan");
+        AccountManager.getInstance().setEmail(ID, "OGyeeyee@hotmail.com");
+        assertNotEquals(AccountManager.getInstance().getEmail(ID), "comingthroughtheback@gmail.com");
+    }
+    
 }
