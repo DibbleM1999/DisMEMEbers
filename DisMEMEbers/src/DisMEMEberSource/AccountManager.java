@@ -94,4 +94,9 @@ public class AccountManager {
         Userlist.clear();
     }
     
+    public static AccountManager getInstance()
+    {
+        return instance;
+    }
+    
 }
