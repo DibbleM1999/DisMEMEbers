@@ -24,17 +24,20 @@ public class Login extends HttpServlet
         var pw = resp.getWriter();
         var iUser = req.getParameter("user");
         var iPass = req.getParameter("pass");
-        for (int i = 0; i < Account.next_UID; i++){
-            var user = "Account.class.getUsername();";
-            var pass = "Account.class.getPassword();";
-            if( iUser.equals(user) || iPass.equals(pass)){
-                var sess = req.getSession();
-                pw.printf("Logged in "+user);
-            } 
-            else {
-                pw.printf("Invalid User/pass");
-        }
-        }
+        
+// LOGIN NEEDS UPDATED FOR NEW USER ID GENERATION HANDLED BY SQL
+        
+//        for (int i = 0; i < Account.next_UID; i++){
+//            var user = "Account.class.getUsername();";
+//            var pass = "Account.class.getPassword();";
+//            if( iUser.equals(user) || iPass.equals(pass)){
+//                var sess = req.getSession();
+//                pw.printf("Logged in "+user);
+//            } 
+//            else {
+//                pw.printf("Invalid User/pass");
+//        }
+//        }
     }
 
 }
