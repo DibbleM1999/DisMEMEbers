@@ -25,7 +25,6 @@ public class AccountManager {
     
     protected AccountManager() 
     {
-        // Weird Recursion bug causing stack overflow.
         try
         {
             if( !new File("disMEMEber_db.sql").exists() )
@@ -264,7 +263,6 @@ public class AccountManager {
     
     public void Clear() throws Exception //KILL EVERYONE
     {
-        Userlist.get(0).resetUID();
         Userlist.clear();
         var stmt = DataBase.getInstance().prepareStatement("truncate table users");
         stmt.executeUpdate();
