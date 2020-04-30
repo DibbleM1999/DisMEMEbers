@@ -61,6 +61,9 @@ public class AccountManager {
     
     public int add(Account newuser) throws Exception//finish when user class is made 
     {
+        if(AccountManager.getInstance().containsUser(newuser.username))
+            return -1;
+        
         Userlist.add(newuser);
         
         var stmt = DataBase.getInstance().prepareStatement("insert into users "
@@ -85,7 +88,6 @@ public class AccountManager {
         if(result.next())
         {
             String user = result.getString(1);
-            System.out.println(user);
             return user;
         }
         
@@ -106,12 +108,16 @@ public class AccountManager {
         if(result.next())
         {
             int uid = result.getInt(1);
-            System.out.println("User ID: " + uid);
             return uid;
         }
         
         else
             return -1;
+    }
+    
+    public boolean containsUser(String user)throws Exception
+    {
+        return AccountManager.getInstance().getID(user) > -1;
     }
     
     public int getIsAdmin(int UID) throws Exception
