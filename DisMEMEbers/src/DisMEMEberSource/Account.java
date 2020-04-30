@@ -34,12 +34,14 @@ public class Account {
     protected String email;
 
     protected int UID = -1;
-
     protected boolean banned = false;
-    
-    protected float ban_time = 0;
-
     protected byte[] avatar = null;
+    
+    // here's the accounts this account is following
+    protected ArrayList<String> Followinglist = new ArrayList<String>(); 
+    
+    protected ArrayList<String> Followedlist = new ArrayList<String>(); 
+    
     
     protected ArrayList<String> History = new ArrayList<String>(); // A basic history for testing functionality.
     
@@ -51,9 +53,7 @@ public class Account {
         this.username = user;
 
         this.password = pass;
-
         this.email = em;
-
         
 
         if(this.UID == -1 || this.UID < next_UID)
@@ -65,73 +65,45 @@ public class Account {
             next_UID++;
 
         }
-
     }
-
     
-
     public boolean isBanned()
-
     {
-
         return this.banned;
-
     }
-
-    
 
     public int getUID()
 
     {
-
        return this.UID;
-
-    }
-
-    
+    } 
 
     public String getUsername()
 
     {
-
         return this.username;
-
     }
-
     
-
     public String getEmail()
-
     {
-
         return this.email;
-
     }
-
-    
-
+       
     public String getPassword()
 
     {
-
         return this.password;
-
     }
 
     
 
     public byte[] getAvatar()
-
     {
-
         if(this.avatar != null)
 
-            return avatar;
-
-        
+            return avatar;        
 
         return null;
-
     }
 
     
@@ -139,13 +111,8 @@ public class Account {
     public boolean setAvatar(byte[] img)
 
     {
-
-        this.avatar = img;
-
-        
-
+        this.avatar = img;        
         return this.avatar != null;
-
     }
     
     public void resetUID() //AccountManager testing
@@ -158,6 +125,50 @@ public class Account {
         return this.next_UID;
     }
     
+
+    public String userRelationship(String username, boolean following) // true for following, false for unfollowing
+    {
+        if (following)
+        {
+            // check if in list
+            if(this.Followinglist.contains(username))
+            {
+                return "Already following";
+            }
+            else
+            {
+                // send notification to user that's being followed
+                this.Followinglist.add(username);
+                return username;
+            }
+            // adding 
+        }
+        else
+        {
+            
+            // check if in list
+            if(this.Followinglist.contains(username))
+            {
+                this.Followinglist.remove(username);
+                return username;
+            }
+            else
+            {
+                return "Not already following";
+            }
+
+        }
+        
+    }
+    
+    public ArrayList<String> seeWhosFollowing()
+    {
+        return null;
+        // search through database of accounts and for each account check who they are follwoing
+        // if this account's name is in it then add that account's name to Followedlist
+        // then return the Followedlist
+    }
+
     public void add_history(String loc) //Adds a basic string of the meme they were on. Should be replaced with more abstract stuff later
     {
         this.History.add(loc);
@@ -196,11 +207,5 @@ public class Account {
     {
         return this.History.get(index);
     }
-    
-    public void sendreport(String reason, int postID, byte[] img, PostManager P)
-    {
-        Report sendinfo = new Report(reason,postID,img);
-        P.add_report(sendinfo);
-    }
-    
 }
+    

@@ -1,15 +1,20 @@
+
+  
 html{
     background-color: RGB(25,25,25); 
 }
-
+a{
+    text-decoration: none;
+    color: white;
+}
 header {
     height: 75px;
     width:100%;
     background-color: black; 
     color: white;
     text-align: center;
-    
-    
+
+
 }
 nav {
     background-color: black;
@@ -17,17 +22,28 @@ nav {
     margin: 0;
     padding: 0;
 }
+select{
+    color: white;
+  background-color: black;
+}
+select{
+    color: white;
+  background-color: black;
+}
 nav ul{
   list-style-type: none; 
   margin: 0;
   padding: 0;
+
 }
 li{
-  display: inline; 
+  display: inline-block;
 }
+
 li.searchbar{
-  float: right; 
+float: right;
 }
+
 .main{
     border: 2px solid black;
     border-radius: 5px;
@@ -43,7 +59,7 @@ li.searchbar{
     text-align: center; 
     padding: 10px;
     background-color: RGB(75,75,75);
-    width:600;
+    width:600px;
     border: 1px solid black;
     border-radius: 3px;
     border-style: outset;
@@ -63,14 +79,121 @@ li.searchbar{
 .tags h2 {
     text-align: center; 
 }
-.tags p{
+.tag {
     text-align: center;
     background-color: RGB(89, 20, 20);
     border: 2px solid RGB(100, 5, 5);
     box-shadow: 2px 2px;
     font-weight: bold;
-    
     width: 25%;
     margin: auto;
-    
+
 }
+
+.left {
+  margin: auto;
+ float: left;
+ width: 50%;
+ height: 150px;
+ border: 1px solid white;
+    border-radius: 3px;
+    border-style: outset;
+    box-shadow: 2px 2px;
+}
+.right{
+  border: 1px solid white;
+  width: 49%;
+  height: 150px;
+  float: right;
+  border-radius: 3px;
+border-style: outset;
+box-shadow: 2px 2px;
+}
+.left h1, .right h1{
+  color: white;
+  text-align: center;
+  }
+ /*for unam and psss forms*/
+ /*for unam and psss forms*/
+ .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  
+  z-index: 1;
+}
+.dropdown-content a {
+      color: black;
+  padding: 1px 6px;
+  
+  display: block;
+
+}
+.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.add{
+    text-align: center; 
+}
+ h2{
+     color: white;
+ }
+label{
+    color:maroon;
+    padding:5px;
+}
+legend{
+    color: white;
+    font-weight: bold;
+    font-size:30px
+}
+
+
+input[type=text], input[type=password] {
+  padding:5px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid white;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=text], input[type=password]:focus  {
+  border: 5px solid maroon;
+} 
+
+ /*for profile pic form*/
+.fieldset{
+    width: 60%;
+    float: left;
+    margin-right: 0; 
+    background-color: RGB(51,51,51);
+}
+
+input[type=file]  {
+
+  padding:5px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid black;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+
+input[type=file]:focus  {
+  border: 3px solid maroon;
+
+}  
+
+

@@ -1,0 +1,53 @@
+
+<html>
+    <head>
+        <title>DisMEMEber</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery.min.js"></script>
+        <script src="bootstrap.bundle.min.js"></script>
+        <link rel=stylesheet href="Style.css">
+    </head>
+    <body>
+        <header>
+              <h1>DisMEMEber</h1>
+        </header>
+        <nav>
+        <ul>
+          <li>
+          <div class="dropdown">
+              <span>username and image</span>
+              <img src="logojim.png" alt="Basic_Jim" height="21" width="21">
+              <div class="dropdown-content">
+                  <a href="Login.html">Login</a>
+                  <a href="Home.html">Home</a>
+              </div>
+          </div>
+		  </li>
+          <li class="searchbar">
+          <form>
+  			<input type="text" name="search" placeholder="Search..">
+		  </form>
+		  </li>
+        </ul>
+          </nav>
+  <div class="left">
+   <form action="/action_page.php">      
+
+            <h2>Signup:</h2>
+            <label for="lname">Username:</label><br>
+            <input type="text" id="lname" name="lname"><br>
+            <label for="pwd">Password:</label><br>
+            <input type="password" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+            <input type="submit" value="Submit">
+
+
+          </form>
+  </div>
+  <div class="center">
+  </div>
+  <div class="right">
+  <h1>Already have an Account?</h1>
+    <a href="Login.html" target="_blank">Sign up</a>
+  </div>
+</html>

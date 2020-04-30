@@ -50,18 +50,19 @@ public class Signup extends HttpServlet {
                 return;
             }
             
-            if (AccountManager.getInstance().name_check(username)){  // check function name
+            if (AccountManager.instance.name_check(username)){  // check function name   AccountManager.name_check(username)
                 pw.print("USERINUSE");
                 return;
             }
             
             
-            if (AccountManager.getInstance().email_check(email)){    // check function name
+            if (AccountManager.instance.email_check(email)){    // check function name   AccountManager.email_check(email)
                 pw.print("EMAILINUSE");
                 return;
             }
             
-            AccountManager.getInstance().add(new Account(username, password, email));
+            AccountManager.instance.add(new Account(username, password, email));
+            //AccountManager.add(new Account(username, password, email));
             pw.print("CREATED");
             sess.setAttribute("name", username);
         } catch (Exception ex) {
