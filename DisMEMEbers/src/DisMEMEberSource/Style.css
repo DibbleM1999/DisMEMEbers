@@ -94,7 +94,7 @@ float: right;
   margin: auto;
  float: left;
  width: 50%;
- height: 150px;
+ height: 250px;
  border: 1px solid white;
     border-radius: 3px;
     border-style: outset;
@@ -157,7 +157,7 @@ legend{
 }
 
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
   padding:5px 10px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -166,11 +166,11 @@ input[type=text], input[type=password] {
   transition: 0.5s;
   outline: none;
 }
-
+/*
 input[type=text], input[type=password]:focus  {
   border: 5px solid maroon;
 } 
-
+*/
  /*for profile pic form*/
 .fieldset{
     width: 60%;
@@ -194,6 +194,10 @@ input[type=file]  {
 input[type=file]:focus  {
   border: 3px solid maroon;
 
-}  
+}
+.right a{
+    color: maroon;
+    text-align: center;
+}
 
 
