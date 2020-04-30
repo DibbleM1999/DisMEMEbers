@@ -161,6 +161,7 @@ public class Account {
     
     public ArrayList<String> seeWhosFollowing()
     {
+        return null;
         // search through database of accounts and for each account check who they are follwoing
         // if this account's name is in it then add that account's name to Followedlist
         // then return the Followedlist
@@ -204,4 +205,5 @@ public class Account {
     {
         return this.History.get(index);
     }
+}
     
