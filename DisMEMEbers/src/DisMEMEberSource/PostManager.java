@@ -10,6 +10,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+//Hayden and Alex
+import java.util.ArrayList;
+import DisMEMEberSource.Report;
+
 /**
  *
  * @author Brice, Kyle, and Dion
@@ -75,9 +80,10 @@ public class PostManager {
         // how to pull information out of tables
         try{
             var stmt = instance.connection.prepareStatement("select imagelocation from posts where pid=?",postID);
-            char image = stmt.executeQuery();
-            int userID, char text, char imageLocation, char dateOfPost
-            Post new_post();
+            //char image = stmt.executeQuery();
+            //int userID, char text, char imageLocation, char dateOfPost
+            //Post new_post();
+            //Hayden Ridgeway commented these out so this file can be pushed... fix plz.
         }
         catch(Exception e){
             throw new RuntimeException(e);
@@ -92,5 +98,32 @@ public class PostManager {
         catch(Exception e){
             throw new RuntimeException(e);
         }
+    }
+    
+    
+    //Hayden and alex custom things we needed
+    
+    protected ArrayList<Report> reports;
+    
+    public void add_report(Report r)
+    {
+        //Could add limit to number of reports at one time. Maybe 1000
+        reports.add(r);
+    }
+    
+    public Report getReport()
+    {
+        Report temp;
+        if(this.reports == null)
+        {
+            temp = new Report("None",-1,null);
+            return temp;
+        }
+        
+        temp = this.reports.get(0);
+        this.reports.remove(0);
+        
+        return temp;
+        
     }
 }
