@@ -22,11 +22,6 @@ import java.util.ArrayList;
  */
 
 public class Account {
-
-    static int next_UID = 1000;
-
-    
-
     protected String username;
 
     protected String password;
@@ -35,7 +30,6 @@ public class Account {
 
     protected int isAdmin = 0;
     
-    protected int UID = -1;
     protected boolean banned = false;
     protected byte[] avatar = null;
     
@@ -45,34 +39,16 @@ public class Account {
     public Account(String user, String pass, String em)
 
     {
-
         this.username = user;
 
         this.password = pass;
         this.email = em;
-        
-
-        if(this.UID == -1 || this.UID < next_UID)
-
-        {
-
-            this.UID = next_UID;
-
-            next_UID++;
-
-        }
     }
     
     public boolean isBanned()
     {
         return this.banned;
     }
-
-    public int getUID()
-
-    {
-       return this.UID;
-    } 
 
     public String getUsername()
 
@@ -109,16 +85,6 @@ public class Account {
     {
         this.avatar = img;        
         return this.avatar != null;
-    }
-    
-    public void resetUID() //AccountManager testing
-    {
-        this.next_UID = 1000;
-    }
-    
-    public int nextid()
-    {
-        return this.next_UID;
     }
     
     public void add_history(String loc) //Adds a basic string of the meme they were on. Should be replaced with more abstract stuff later
