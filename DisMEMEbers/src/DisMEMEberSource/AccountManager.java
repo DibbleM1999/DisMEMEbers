@@ -66,7 +66,7 @@ public class AccountManager {
         
         var stmt = DataBase.getInstance().prepareStatement("insert into users "
                 + "(username, password, email, avatar, isAdmin) "
-                + "values (?, ?, ?, ?)");
+                + "values (?, ?, ?, ?, ?)");
         stmt.setString(1, newuser.username);
         stmt.setString(2, newuser.password);
         stmt.setString(3, newuser.email);
@@ -74,25 +74,24 @@ public class AccountManager {
         stmt.setInt(5, newuser.isAdmin);
         stmt.executeUpdate();
             
-        return newuser.getUID();
+        return AccountManager.getInstance().getID(newuser.username);
     }
     
-    public Account getUser(int ID) throws Exception//will return user once created
-    {
-        for(int i = 0; i < Userlist.size(); i++)
-        {
-            if(Userlist.get(i).UID == ID)
-                return Userlist.get(i);
-        }
-        
+    public String getUser(int ID) throws Exception
+    {   
         var stmt = DataBase.getInstance().prepareStatement("select username from users where uid=?");
         stmt.setInt(1, ID);
         var result = stmt.executeQuery();
-        String user = result.getString(1);
-        System.out.println(user);
         
-        Account fail = new Account("","",""); //Blank account to show there is no account of the given ID.
-        return fail;
+        if(result.next())
+        {
+            String user = result.getString(1);
+            System.out.println(user);
+            return user;
+        }
+        
+        else
+            return null;
     }
     
     public int getID(String user) throws Exception//Will return the ID of the given user. -1 if none.
@@ -105,9 +104,15 @@ public class AccountManager {
         var stmt = DataBase.getInstance().prepareStatement("select uid from users where username=? and password IS NOT NULL");
         stmt.setString(1, user);
         var result = stmt.executeQuery();
-        int uid = result.getInt(1);
-        System.out.println(uid);
-        return uid;
+        if(result.next())
+        {
+            int uid = result.getInt(1);
+            System.out.println("User ID: " + uid);
+            return uid;
+        }
+        
+        else
+            return -1;
     }
     
     public int getIsAdmin(int UID) throws Exception
@@ -115,8 +120,14 @@ public class AccountManager {
         var stmt = DataBase.getInstance().prepareStatement("select isAdmin from users where uid=?");
         stmt.setInt(1, UID);
         var result = stmt.executeQuery();
+        if(result.next())
+        {
         int admin = result.getInt(1);
         return admin;
+        }
+        
+        else
+            return -1;
     }
     
     public byte[] getAvatar(int ID) throws Exception
@@ -124,8 +135,14 @@ public class AccountManager {
         var stmt = DataBase.getInstance().prepareStatement("select avatar from users where uid=?");
         stmt.setInt(1, ID);
         var result = stmt.executeQuery();
-        byte[] avatar = result.getBytes(1);
-        return avatar;
+        if(result.next())
+        {
+            byte[] avatar = result.getBytes(1);
+            return avatar;
+        }
+        
+        else
+            return null;
     }
     
     public void setAvatar(int ID, byte[] data) throws Exception
@@ -141,8 +158,14 @@ public class AccountManager {
         var stmt = DataBase.getInstance().prepareStatement("select email from users where uid=?");
         stmt.setInt(1, ID);
         var result = stmt.executeQuery();
-        String email = result.getString(1);
-        return email;
+        if(result.next())
+        {
+            String email = result.getString(1);
+            return email;
+        }
+        
+        else
+            return null;
     }
     
     public void setEmail(int ID, String data) throws Exception
@@ -158,8 +181,14 @@ public class AccountManager {
         var stmt = DataBase.getInstance().prepareStatement("select password from users where uid=?");
         stmt.setInt(1, ID);
         var result = stmt.executeQuery();
-        String password = result.getString(1);
-        return password;
+        if(result.next())
+        {
+            String password = result.getString(1);
+            return password;
+        }
+        
+        else
+            return null;
     }
     
     public void setPassword(int ID, String data) throws Exception
@@ -210,10 +239,35 @@ public class AccountManager {
         return false;
     }
     
-    public void Clear() //KILL EVERYONE
+   public void printTable() throws Exception
+   {
+       var stmt = DataBase.getInstance().prepareStatement("select * from users");
+       var request = stmt.executeQuery();
+       var requestMetaData = request.getMetaData();
+       
+       int NumColumns = requestMetaData.getColumnCount();
+       
+       System.out.println("----- TABLE PRINT -----");
+       
+       while(request.next())
+       {
+           for(int i = 1; i <= NumColumns; i++)
+           {
+               System.out.print(request.getString(i) + " ");
+           }
+           
+           System.out.println();
+       }
+       
+        System.out.println("----- END PRINT -----");
+   }
+    
+    public void Clear() throws Exception //KILL EVERYONE
     {
         Userlist.get(0).resetUID();
         Userlist.clear();
+        var stmt = DataBase.getInstance().prepareStatement("truncate table users");
+        stmt.executeUpdate();
     }
     
 }

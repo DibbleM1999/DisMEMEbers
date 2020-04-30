@@ -18,52 +18,52 @@ public class Admin extends Account
        isAdmin = 1;
     }
     
+    // Commented out for now, AccountManager needs a way to retrieve an account object.
+//    public Account get_Account_by_name(String name) throws Exception
+//    {
+//        return AccountManager.getInstance().getUser(AccountManager.getInstance().getID(name));
+//    }
+//    
+//    public Account get_Account_by_ID(int ID, AccountManager A) throws Exception
+//    {
+//        return AccountManager.getInstance().getUser(ID);
+//    }
     
-    public Account get_Account_by_name(String name) throws Exception
-    {
-        return AccountManager.getInstance().getUser(AccountManager.getInstance().getID(name));
-    }
+//    public ArrayList<String> get_history_by_name(String name, AccountManager A)
+//    {
+//        return this.get_Account_by_name(name, A).get_history();
+//    }
     
-    public Account get_Account_by_ID(int ID, AccountManager A) throws Exception
-    {
-        return AccountManager.getInstance().getUser(ID);
-    }
+//    public ArrayList<String> get_history_by_Id(int ID, AccountManager A) throws Exception
+//    {
+//        return this.get_Account_by_ID(ID, A).get_history();
+//    }
     
-    public ArrayList<String> get_history_by_name(String name, AccountManager A)
-    {
-        return this.get_Account_by_name(name, A).get_history();
-    }
+//    public void delete_history_by_name(String name,AccountManager A) //Might be a problem to have because of similar names
+//    {
+//       this.get_Account_by_name(name, A).delete_history();
+//    }
     
-    public ArrayList<String> get_history_by_Id(int ID, AccountManager A) throws Exception
-    {
-        return this.get_Account_by_ID(ID, A).get_history();
-    }
-    
-    public void delete_history_by_name(String name,AccountManager A) //Might be a problem to have because of similar names
-    {
-       this.get_Account_by_name(name, A).delete_history();
-    }
-    
-    public void delete_history_by_ID(int ID, AccountManager A) throws Exception
-    {
-        this.get_Account_by_ID(ID, A).delete_history();
-    }
+//    public void delete_history_by_ID(int ID, AccountManager A) throws Exception
+//    {
+//        this.get_Account_by_ID(ID, A).delete_history();
+//    }
     
     public void delete_user(int ID, AccountManager A)  throws Exception//Add the ability to store deleted accounts for a certain period of time for possible recovery.
     {
         A.delete_by_ID(ID);
     }
     
-    public void delete_avatar_by_ID(int ID, AccountManager A) throws Exception
-    {
-        this.get_Account_by_ID(ID,A).setAvatar(null);
-    }
+//    public void delete_avatar_by_ID(int ID, AccountManager A) throws Exception
+//    {
+//        this.get_Account_by_ID(ID,A).setAvatar(null);
+//    }
     
-    public void ban_by_ID( int ID, AccountManager A, float time)  throws Exception//Time will most likely be in minutes or hours.
-    {
-        this.get_Account_by_ID(ID, A).banned = true;
-        this.get_Account_by_ID(ID, A).ban_time = time; //-1 for permaban
-    }
+//    public void ban_by_ID( int ID, AccountManager A, float time)  throws Exception//Time will most likely be in minutes or hours.
+//    {
+//        this.get_Account_by_ID(ID, A).banned = true;
+//        this.get_Account_by_ID(ID, A).ban_time = time; //-1 for permaban
+//    }
 
     private Object get_Account_by_name(String name, AccountManager A) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
