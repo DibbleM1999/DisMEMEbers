@@ -13,9 +13,6 @@ import java.util.ArrayList;
  * @author hridgeway
  */
 
-/*
-- Update Functionality.
-*/
 
 public class AccountManager {
     //being worked on
@@ -93,6 +90,25 @@ public class AccountManager {
         
         else
             return null;
+    }
+    
+    public int verifyUser(String user, String password) throws Exception
+    {
+        if(!AccountManager.getInstance().containsUser(user))
+            return -1;
+        
+        var stmt = DataBase.getInstance().prepareStatement("select uid from users where username=? and password=?");
+        stmt.setString(1, user);
+        stmt.setString(2, password);
+        var result = stmt.executeQuery();
+        if(result.next())
+        {
+            int uid = result.getInt(1);
+            return uid;
+        }
+        
+        else
+            return -1;
     }
     
     public int getID(String user) throws Exception//Will return the ID of the given user. -1 if none.
