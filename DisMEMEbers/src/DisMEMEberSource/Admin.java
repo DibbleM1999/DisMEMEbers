@@ -19,52 +19,53 @@ public class Admin extends Account
        super(user, pass, em);
     }
     
+    // Commented out for now, because account manager does not have a method to return and account object, just data
+    // in a table pertaining to a specific account.
+//    public Account get_Account_by_name(String name, AccountManager A)
+//    {
+//        return A.getInstance().getUser(A.getInstance().getID(name));
+//    }
+//    
+//    public Account get_Account_by_ID(int ID, AccountManager A)
+//    {
+//        return A.getInstance().getUser(ID);
+//    }
     
-    public Account get_Account_by_name(String name, AccountManager A)
-    {
-        return A.instance.getUser(A.instance.getID(name));
-    }
+//    public ArrayList<String> get_history_by_name(String name, AccountManager A)
+//    {
+//        return this.get_Account_by_name(name, A).get_history();
+//    }
+//    
+//    public ArrayList<String> get_history_by_Id(int ID, AccountManager A)
+//    {
+//        return this.get_Account_by_ID(ID, A).get_history();
+//    }
+//    
+//    public void delete_history_by_name(String name,AccountManager A) //Might be a problem to have because of similar names
+//    {
+//       this.get_Account_by_name(name, A).delete_history();
+//    }
+//    
+//    public void delete_history_by_ID(int ID, AccountManager A)
+//    {
+//        this.get_Account_by_ID(ID, A).delete_history();
+//    }
     
-    public Account get_Account_by_ID(int ID, AccountManager A)
-    {
-        return A.instance.getUser(ID);
-    }
-    
-    public ArrayList<String> get_history_by_name(String name, AccountManager A)
-    {
-        return this.get_Account_by_name(name, A).get_history();
-    }
-    
-    public ArrayList<String> get_history_by_Id(int ID, AccountManager A)
-    {
-        return this.get_Account_by_ID(ID, A).get_history();
-    }
-    
-    public void delete_history_by_name(String name,AccountManager A) //Might be a problem to have because of similar names
-    {
-       this.get_Account_by_name(name, A).delete_history();
-    }
-    
-    public void delete_history_by_ID(int ID, AccountManager A)
-    {
-        this.get_Account_by_ID(ID, A).delete_history();
-    }
-    
-    public void delete_user(int ID, AccountManager A) //Add the ability to store deleted accounts for a certain period of time for possible recovery.
+    public void delete_user(int ID, AccountManager A) throws Exception//Add the ability to store deleted accounts for a certain period of time for possible recovery.
     {
         A.delete_by_ID(ID);
     }
     
-    public void delete_avatar_by_ID(int ID, AccountManager A)
-    {
-        this.get_Account_by_ID(ID,A).setAvatar(null);
-    }
-    
-    public void ban_by_ID( int ID, AccountManager A, float time) //Time will most likely be in minutes or hours.
-    {
-        this.get_Account_by_ID(ID, A).banned = true;
-        this.get_Account_by_ID(ID, A).ban_time = time; //-1 for permaban
-    }
+//    public void delete_avatar_by_ID(int ID, AccountManager A)
+//    {
+//        this.get_Account_by_ID(ID,A).setAvatar(null);
+//    }
+//    
+//    public void ban_by_ID( int ID, AccountManager A, float time) //Time will most likely be in minutes or hours.
+//    {
+//        this.get_Account_by_ID(ID, A).banned = true;
+//        //this.get_Account_by_ID(ID, A).ban_time = time; //-1 for permaban
+//    }
     
     public void getreport(PostManager P)
     {

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,17 +26,23 @@ public class Login extends HttpServlet
         var pw = resp.getWriter();
         var iUser = req.getParameter("user");
         var iPass = req.getParameter("pass");
-        for (int i = 0; i < Account.next_UID; i++){
-            var user = "Account.class.getUsername();";
-            var pass = "Account.class.getPassword();";
-            if( iUser.equals(user) || iPass.equals(pass)){
+        
+        try {
+            var result = AccountManager.getInstance().verifyUser(iUser, iPass);
+            
+            if(result >= 0)
+            {
                 var sess = req.getSession();
-                pw.printf("Logged in "+user);
-            } 
-            else {
-                pw.printf("Invalid User/pass");
+                pw.printf("Logged in as " + AccountManager.getInstance().getUser(result));
+            }
+            
+            else
+                pw.print("Invalid username or password.");
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-        }
+            
     }
 
 }

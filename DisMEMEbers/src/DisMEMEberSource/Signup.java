@@ -50,18 +50,19 @@ public class Signup extends HttpServlet {
                 return;
             }
             
-            if (AccountManager.instance.name_check(username)){  // check function name   AccountManager.name_check(username)
-                pw.print("USERINUSE");
-                return;
-            }
+            // This section is commented out because account manager already checks if the database contains a particular account.
+//            if (AccountManager.getInstance().name_check(username)){  // check function name   AccountManager.name_check(username)
+//                pw.print("USERINUSE");
+//                return;
+//            }
+//            
+//            
+//            if (AccountManager.getInstance().email_check(email)){    // check function name   AccountManager.email_check(email)
+//                pw.print("EMAILINUSE");
+//                return;
+//            }
             
-            
-            if (AccountManager.instance.email_check(email)){    // check function name   AccountManager.email_check(email)
-                pw.print("EMAILINUSE");
-                return;
-            }
-            
-            AccountManager.instance.add(new Account(username, password, email));
+            AccountManager.getInstance().add(new Account(username, password, email));
             //AccountManager.add(new Account(username, password, email));
             pw.print("CREATED");
             sess.setAttribute("name", username);

@@ -73,22 +73,21 @@ public class PostManager {
         }
     }
     
-    public static void readPost(int postID){
-        // problems/blocker do we as a class want to alow updates to a post 
-        // how do we save off the information given by a select statement 
-        // dion needs new audio to comuicate better
-        // how to pull information out of tables
-        try{
-            var stmt = instance.connection.prepareStatement("select imagelocation from posts where pid=?",postID);
-            //char image = stmt.executeQuery();
-            //int userID, char text, char imageLocation, char dateOfPost
-            //Post new_post();
-            //Hayden Ridgeway commented these out so this file can be pushed... fix plz.
-        }
-        catch(Exception e){
-            throw new RuntimeException(e);
-        }
-    }
+//    public static void readPost(int postID){
+//        // problems/blocker do we as a class want to alow updates to a post 
+//        // how do we save off the information given by a select statement 
+//        // dion needs new audio to comuicate better
+//        // how to pull information out of tables
+//        try{
+//            var stmt = instance.connection.prepareStatement("select imagelocation from posts where pid=?",postID);
+//            char image = stmt.executeQuery();
+//            int userID, char text, char imageLocation, char dateOfPost
+//            Post new_post();
+//        }
+//        catch(Exception e){
+//            throw new RuntimeException(e);
+//        }
+//    }
     
     public static void deletePost( int postID ) {
         try{
