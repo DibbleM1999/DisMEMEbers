@@ -8,11 +8,11 @@ public class Post {
     static int counter = 0;
     int postID;
     int postersUserID;
-    char postText;
-    char image;
-    char date;
+    String postText;
+    String image;
+    String date;
     
-    public Post(int userID, char text, char imageLocation, char dateOfPost)
+    public Post(int userID, String text, String imageLocation, String dateOfPost)
     {
         this.postID = Post.counter++;
         this.postersUserID = userID;
@@ -28,15 +28,15 @@ public class Post {
     {
        return this.postID;
     }
-    public char getText()
+    public String getText()
     {
        return this.postText;
     }
-    public char getImageLocation()
+    public String getImageLocation()
     {
        return this.image;
     }
-    public char getDate()
+    public String getDate()
     {
        return this.date;
     }
