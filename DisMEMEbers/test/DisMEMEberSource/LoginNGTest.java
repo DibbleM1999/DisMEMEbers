@@ -5,8 +5,10 @@
  */
 package DisMEMEberSource;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.net.URL;
+import org.eclipse.jetty.util.log.AbstractLogger;
+import org.eclipse.jetty.util.log.Log;
+import org.eclipse.jetty.util.log.StdErrLog;
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 import org.testng.annotations.AfterClass;
@@ -27,13 +29,26 @@ public class LoginNGTest {
 
     
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void startJetty() throws Exception {
+        String[] args = new String[]{
+            "jetty.home=../jetty",
+            "STOP.PORT=2021", "STOP.KEY=AutomaticTofu"
+        };
+        var LG = new StdErrLog();
+        LG.setLevel(AbstractLogger.LEVEL_OFF);
+        Log.setLog(LG);
+        org.eclipse.jetty.start.Main.main(args);
     }
-
+    
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void stopJetty() throws Exception {
+        String[] args = new String[]{ "jetty.home=../jetty",
+            "STOP.PORT=2021", "STOP.KEY=AutomaticTofu",
+            "--stop"
+        };
+        org.eclipse.jetty.start.Main.main(args);
     }
-
+    
     @BeforeMethod
     public void setUpMethod() throws Exception {
     }
@@ -41,14 +56,23 @@ public class LoginNGTest {
     @AfterMethod
     public void tearDownMethod() throws Exception {
     }
-    
-    @Test
-    public void testDoGet() throws Exception {
-        Login L = new Login();
-        HttpServletRequest req = new HttpServletRequest();
-        HttpServletResponse resp = new HttpServletResponse();
-        L.doGet(req,resp);
-        
+    String fetch(String... allurls) throws Exception{
+        String str=null;
+        byte[] returnedData=new byte[]{0};  //dummy
+        for(String oneurl: allurls ){
+            var url = new URL("http://localhost:2020"+oneurl);
+            var conn = url.openConnection();
+            conn.connect();
+            var istr = conn.getInputStream();
+            returnedData = istr.readAllBytes();
+        }
+        return new String(returnedData,0,returnedData.length);
     }
+   
+    @Test
+    public void testLogin1() throws Exception{
+        String txt = fetch( "/srv/login?user=bob" ) ;
+        assertTrue( txt.contains("Logged in as bob"));
+}
     
 }
